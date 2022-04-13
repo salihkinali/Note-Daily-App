@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".view.HomeFragment">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/noteTitle"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/_10dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/note_title"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/text_hint_color"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10dp"
+        android:hint="@string/add_kategorisi"
+        android:textColor="@color/black"
+        android:textColorHint="@color/text_hint_color"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="256dp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/note"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="@dimen/_10dp"
+        android:ems="10"
+        android:hint="@string/add_note"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/text_hint_color"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="314dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/updateButton"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/_10dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_color"
+        android:text="@string/update"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="434dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/deleteButton"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/_10dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_color"
+        android:text="@string/delete"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="487dp" />
+</androidx.appcompat.widget.LinearLayoutCompat>

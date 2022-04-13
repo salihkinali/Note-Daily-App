@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_10dp"
+
+    app:cardCornerRadius="20dp"
+    app:cardElevation="30dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_20dp">
+
+                <TextView
+                    android:id="@+id/noteTitleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/autour_one"
+                    android:paddingTop="@dimen/_10dp"
+                    android:text="@string/sadaasds"
+                    android:textAlignment="center"
+                    android:textColor="@color/base_color_eleventh"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/noteCategoryText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="@dimen/_10dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:paddingTop="5dp"
+                android:text="sdfsdf"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/noteInsideText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="@dimen/_10dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:paddingStart="@dimen/_10dp"
+                android:paddingTop="5dp"
+                android:text="sfdfsfdsf"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.cardview.widget.CardView>

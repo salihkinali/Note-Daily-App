@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Note&amp;DailyApp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_note">Add Note</string>
+    <string name="add_kategorisi">Add Category</string>
+    <string name="note_title">Note Title</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="pick_up_color">Pick Up Color</string>
+    <string name="note_kategorisi">Note Kategorisi</string>
+    <string name="sadaasds">sadaasds</string>
+    <string name="button">click button</string>
+    <string name="dialogTitle">Delete Note File</string>
+    <string name="dialogMessage">Are you sure delete this note?</string>
+</resources>

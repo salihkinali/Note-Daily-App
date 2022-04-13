@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.HomeFragment">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/noteTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_margin="@dimen/_10dp"
+        android:hint="@string/note_title"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColorHint="@color/text_hint_color"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="188dp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/_10dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_kategorisi"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/text_hint_color"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="256dp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/note"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="@dimen/_10dp"
+        android:ems="10"
+        android:hint="@string/add_note"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/text_hint_color"
+       />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <View
+                android:id="@+id/viewColor1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/background_note_color_1" />
+
+            <ImageView
+                android:id="@+id/imageColor1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="@dimen/_10dp"
+                android:src="@drawable/ic_check"
+                app:tint="@color/white" />
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <View
+                android:id="@+id/viewColor2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/background_note_color_2" />
+
+            <ImageView
+                android:id="@+id/imageColor2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="@dimen/_10dp"
+                app:tint="@color/white" />
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <View
+                android:id="@+id/viewColor3"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="@dimen/_50dp"
+                android:background="@drawable/background_note_color_3" />
+            <ImageView
+                android:id="@+id/imageColor3"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="@dimen/_50dp"
+                android:padding="@dimen/_10dp"
+                app:tint="@color/white" />
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <View
+                android:id="@+id/viewColor4"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="@dimen/_50dp"
+                android:background="@drawable/background_note_color_4" />
+            <ImageView
+                android:id="@+id/imageColor4"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="@dimen/_50dp"
+                android:padding="@dimen/_10dp"
+                app:tint="@color/white" />
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <View
+                android:id="@+id/viewColor5"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="@dimen/_50dp"
+                android:background="@drawable/background_note_color_5" />
+            <ImageView
+                android:id="@+id/imageColor5"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="@dimen/_50dp"
+                android:padding="@dimen/_10dp"
+                app:tint="@color/white" />
+
+        </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pick_up_color"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="@color/base_color_sixth"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/button_background_color"
+        android:text="@string/add_note"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="568dp" />
+</androidx.appcompat.widget.LinearLayoutCompat>
