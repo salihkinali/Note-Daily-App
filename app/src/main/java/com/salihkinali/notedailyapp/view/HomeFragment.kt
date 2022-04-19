@@ -54,7 +54,6 @@ class HomeFragment : Fragment() {
             noteList = noteLists
             adapter = NoteAdapter(noteList)
             binding.noteReyclerView.adapter = adapter
-            adapter.notifyDataSetChanged()
         })
 
         return binding.root
@@ -75,7 +74,11 @@ class HomeFragment : Fragment() {
             noteList = noteLists
             binding.apply {
                 if (noteList.isEmpty()) {
-                    Snackbar.make(requireView(), "?r?n bulunamad?", 1000).show()
+                    Snackbar.make(
+                        requireView(),
+                        "Ürün Bulunamadı",
+                        2000
+                    ).show()
                 } else {
                 noteReyclerView.layoutManager = GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false)
                 noteReyclerView.setHasFixedSize(true)

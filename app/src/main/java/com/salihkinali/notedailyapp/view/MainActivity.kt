@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.homeFragment -> showBottomNav()
-                R.id.noteFragment -> showBottomNav()
+                R.id.addListFragment -> showBottomNav()
                 else -> hideBottomNav()
             }
         }

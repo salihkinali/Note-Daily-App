@@ -7,7 +7,6 @@ plugins {
 
 android {
     compileSdk 32
-    compileOptions.encoding = 'windows-1254'
     defaultConfig {
         applicationId "com.salihkinali.notedailyapp"
         minSdk 21
@@ -49,7 +48,7 @@ dependencies {
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.4.2"
-    implementation "androidx.navigation:navigation-ui-ktx:2.4.1"
+    implementation "androidx.navigation:navigation-ui-ktx:2.4.2"
 
     //Room
     implementation "androidx.room:room-runtime:2.4.2"

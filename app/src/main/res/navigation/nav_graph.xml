@@ -27,12 +27,6 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
-        android:id="@+id/noteFragment"
-        android:name="com.salihkinali.notedailyapp.view.NoteFragment"
-        android:label="NoteFragment"
-        tools:layout="@layout/fragment_home"
-        />
-    <fragment
         android:id="@+id/addNoteFragment"
         android:name="com.salihkinali.notedailyapp.view.AddNoteFragment"
         android:label="AddNoteFragment"
@@ -57,4 +51,9 @@
             android:id="@+id/actionDetail_toHomeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/addListFragment"
+        android:name="com.salihkinali.notedailyapp.view.AddListFragment"
+        android:label="fragment_add_list"
+        tools:layout="@layout/fragment_add_list" />
 </navigation>
