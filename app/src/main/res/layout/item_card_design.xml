@@ -1,58 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardItem"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/_10dp"
+    android:orientation="vertical"
+    android:padding="@dimen/_6dp">
 
-    app:cardCornerRadius="20dp"
-    app:cardElevation="30dp">
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayout"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardItem"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/_20dp">
+        android:layout_height="match_parent"
+        app:cardCornerRadius="@dimen/_10dp"
+        app:cardElevation="30dp">
 
-                <TextView
-                    android:id="@+id/noteTitleText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/autour_one"
-                    android:paddingTop="@dimen/_10dp"
-                    android:hint="Not Başlığı"
-                    android:textColorHint="@color/black"
-                    android:textAlignment="center"
-                    android:textColor="@color/base_color_eleventh"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/baselayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/lines"
+                android:layout_width="8dp"
+                android:layout_height="0dp"
+                android:background="@drawable/view"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.551" />
+
+            <TextView
+                android:id="@+id/noteTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/autour_one"
+                android:hint="Not Başlığı"
+                android:paddingTop="@dimen/_10dp"
+                android:textAlignment="textStart"
+                android:textColor="@color/base_color_eleventh"
+                android:textColorHint="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/lines"
+                app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/popup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="5dp"
+                app:srcCompat="@drawable/option" />
 
             <TextView
                 android:id="@+id/noteCategoryText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:paddingTop="5dp"
                 android:text="sdfsdf"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/lines"
+                app:layout_constraintTop_toBottomOf="@+id/noteTitleText" />
 
             <TextView
                 android:id="@+id/noteInsideText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:paddingTop="5dp"
                 android:text="sfdfsfdsf"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/lines"
+                app:layout_constraintTop_toBottomOf="@+id/noteCategoryText" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ic_datetime"
+                android:backgroundTint="@color/black"
+                app:layout_constraintStart_toStartOf="@id/lines"
+                app:layout_constraintTop_toBottomOf="@+id/noteInsideText" />
 
-</androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="28/12/2022"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="@dimen/_10dp"
+                android:background="@drawable/ic_time"
+                android:backgroundTint="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/imageView2"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+            <TextView
+                android:id="@+id/timeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="12:36"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

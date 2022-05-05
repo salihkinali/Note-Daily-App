@@ -20,7 +20,7 @@ class AddNoteFragment : Fragment() {
     private var _binding: FragmentAddNoteBinding? = null
     private val binding get() = _binding!!
     private lateinit var db: NoteDatabese
-    private var selectedNoteColor: String = "282829"
+    private var selectedNoteColor: String = "#282829"
     private lateinit var viewModel: NoteViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +51,7 @@ class AddNoteFragment : Fragment() {
 
         binding.apply {
           viewColor1.setOnClickListener{
-              selectedNoteColor = "282829"
+              selectedNoteColor = "#282829"
               imageColor1.setImageResource(R.drawable.ic_check)
               imageColor2.setImageResource(0)
               imageColor3.setImageResource(0)
@@ -60,7 +60,7 @@ class AddNoteFragment : Fragment() {
 
           }
             viewColor2.setOnClickListener {
-                selectedNoteColor = "05595B"
+                selectedNoteColor = "#05595B"
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(R.drawable.ic_check)
                 imageColor3.setImageResource(0)
@@ -68,7 +68,7 @@ class AddNoteFragment : Fragment() {
                 imageColor5.setImageResource(0)
             }
             viewColor3.setOnClickListener {
-                selectedNoteColor = "F6F54D"
+                selectedNoteColor = "#F6F54D"
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(R.drawable.ic_check)
@@ -76,7 +76,7 @@ class AddNoteFragment : Fragment() {
                 imageColor5.setImageResource(0)
             }
             viewColor4.setOnClickListener {
-                selectedNoteColor = "344CB7"
+                selectedNoteColor = "#344CB7"
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(0)
@@ -84,7 +84,7 @@ class AddNoteFragment : Fragment() {
                 imageColor5.setImageResource(0)
             }
             viewColor5.setOnClickListener {
-                selectedNoteColor = "F55353"
+                selectedNoteColor = "#F55353"
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(0)

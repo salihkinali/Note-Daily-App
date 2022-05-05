@@ -14,4 +14,6 @@
     <string name="dialogMessage">Are you sure delete this note?</string>
     <string name="add_list">Add List</string>
     <string name="home">Home</string>
+    <string name="sil">Sil</string>
+    <string name="duzenle">Düzenle</string>
 </resources>

@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
 
         viewModel.noteList.observe(viewLifecycleOwner, Observer {noteLists->
             noteList = noteLists
-            adapter = NoteAdapter(noteList)
+            adapter = NoteAdapter(requireContext(),viewModel,noteList)
             binding.noteReyclerView.adapter = adapter
         })
 
@@ -80,7 +80,7 @@ class HomeFragment : Fragment() {
                         2000
                     ).show()
                 } else {
-                noteReyclerView.layoutManager = GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false)
+                noteReyclerView.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
                 noteReyclerView.setHasFixedSize(true)
             }
 

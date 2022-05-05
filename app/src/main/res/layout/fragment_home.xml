@@ -24,13 +24,16 @@
         android:padding="@dimen/_20dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:layout_marginEnd="@dimen/_5dp"
+        app:fabSize="auto"
+        android:backgroundTint="@color/base_color_seventh"
+        app:tint="@color/white"
         app:backgroundTint="@color/base_color_fourth"
         android:clickable="true"
         android:src="@drawable/ic_write"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.923"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
