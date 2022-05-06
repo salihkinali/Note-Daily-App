@@ -74,12 +74,13 @@ class HomeFragment : Fragment() {
             noteList = noteLists
             binding.apply {
                 if (noteList.isEmpty()) {
-                    Snackbar.make(
-                        requireView(),
-                        "Ürün Bulunamadı",
-                        2000
-                    ).show()
+                   noteReyclerView.visibility = View.GONE
+                    animationView.visibility = View.VISIBLE
+                    animationTextView.visibility = View.VISIBLE
                 } else {
+                    noteReyclerView.visibility = View.VISIBLE
+                    animationView.visibility = View.GONE
+                    animationTextView.visibility = View.GONE
                 noteReyclerView.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
                 noteReyclerView.setHasFixedSize(true)
             }

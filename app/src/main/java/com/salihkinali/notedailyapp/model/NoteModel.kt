@@ -16,5 +16,9 @@ data class NoteModel(
     @ColumnInfo(name = "note_inside")
     var noteInside: String,
     @ColumnInfo(name = "note_color")
-    var noteColor :String
+    var noteColor :String,
+    @ColumnInfo(name = "date_time")
+    val dateTime : String,
+    @ColumnInfo(name = "time_now")
+    val timeNow : String
 ):Serializable

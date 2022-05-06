@@ -1,11 +1,13 @@
 package com.salihkinali.notedailyapp.view
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.salihkinali.notedailyapp.R
@@ -14,6 +16,8 @@ import com.salihkinali.notedailyapp.databinding.FragmentAddNoteBinding
 import com.salihkinali.notedailyapp.model.NoteModel
 import com.salihkinali.notedailyapp.viewmodel.NoteViewModel
 import com.salihkinali.notedailyapp.viewmodel.NoteViewModelFactory
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 class AddNoteFragment : Fragment() {
@@ -46,10 +50,12 @@ class AddNoteFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
+
           viewColor1.setOnClickListener{
               selectedNoteColor = "#282829"
               imageColor1.setImageResource(R.drawable.ic_check)
@@ -60,7 +66,7 @@ class AddNoteFragment : Fragment() {
 
           }
             viewColor2.setOnClickListener {
-                selectedNoteColor = "#05595B"
+                selectedNoteColor = "#007C3F"
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(R.drawable.ic_check)
                 imageColor3.setImageResource(0)
@@ -95,6 +101,12 @@ class AddNoteFragment : Fragment() {
                 val title = noteTitle.text.toString()
                 val categoryText = category.text.toString()
                 val inside = note.text.toString()
+                val current = LocalDateTime.now()
+                val formatterDate = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+                val formatterTime = DateTimeFormatter.ofPattern("HH:mm")
+                val formattedDate = current.format(formatterDate)
+                val formattedTime = current.format(formatterTime)
+
                 if(title.isNotEmpty() && categoryText.isNotEmpty() && inside.isNotEmpty()){
 
                     viewModel.addNote(
@@ -102,13 +114,15 @@ class AddNoteFragment : Fragment() {
                             noteTitle = title,
                             noteCategory = categoryText,
                             noteInside = inside,
-                            noteColor = selectedNoteColor
+                            noteColor = selectedNoteColor,
+                            dateTime = formattedDate,
+                            timeNow = formattedTime
                         )
                     )
                     val action = AddNoteFragmentDirections.addNoteToHomeFragment()
                     findNavController().navigate(action)
                 }else{
-                    Toast.makeText(context,"Please fill in the blanks",Toast.LENGTH_LONG).show()
+                    Toast.makeText(context,"Lütfen Boş Alanları Doldurun",Toast.LENGTH_LONG).show()
                 }
 
             }

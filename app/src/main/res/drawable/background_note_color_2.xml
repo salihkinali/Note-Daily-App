@@ -25,7 +25,7 @@
         android:bottom="@dimen/_6dp">
 
         <shape android:shape="oval">
-            <solid android:color="@color/base_color_seventh" />
+            <solid android:color="@color/primaryDarkColor" />
         </shape>
     </item>
 </layer-list>
