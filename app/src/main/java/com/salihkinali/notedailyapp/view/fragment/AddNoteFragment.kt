@@ -1,4 +1,4 @@
-package com.salihkinali.notedailyapp.view
+package com.salihkinali.notedailyapp.view.fragment
 
 import android.os.Build
 import android.os.Bundle
@@ -23,8 +23,9 @@ import java.time.format.DateTimeFormatter
 class AddNoteFragment : Fragment() {
     private var _binding: FragmentAddNoteBinding? = null
     private val binding get() = _binding!!
+    private var selectedNoteColor: String? = null
+    private var selectedRadioState: String? = "Eğitim"
     private lateinit var db: NoteDatabese
-    private var selectedNoteColor: String = "#282829"
     private lateinit var viewModel: NoteViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,17 +36,17 @@ class AddNoteFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAddNoteBinding.inflate(inflater,container,false)
+        _binding = FragmentAddNoteBinding.inflate(inflater, container, false)
 
         val application = requireNotNull(this.activity).application
 
         val dbDao = NoteDatabese.getInstance(application)?.noteDatabeseDao
 
-        val viewModelFactory = dbDao?.let { NoteViewModelFactory(it,application) }
+        val viewModelFactory = dbDao?.let { NoteViewModelFactory(it, application) }
 
         viewModel = viewModelFactory?.let {
 
-            ViewModelProvider(this,it)[NoteViewModel::class.java]
+            ViewModelProvider(this, it)[NoteViewModel::class.java]
         }!!
         return binding.root
     }
@@ -56,16 +57,18 @@ class AddNoteFragment : Fragment() {
 
         binding.apply {
 
-          viewColor1.setOnClickListener{
-              selectedNoteColor = "#282829"
-              imageColor1.setImageResource(R.drawable.ic_check)
-              imageColor2.setImageResource(0)
-              imageColor3.setImageResource(0)
-              imageColor4.setImageResource(0)
-              imageColor5.setImageResource(0)
+            viewColor1.setOnClickListener {
+                selectedNoteColor = "#282829"
+                imageColor1.setImageResource(R.drawable.ic_check)
+                imageColor2.setImageResource(0)
+                imageColor3.setImageResource(0)
+                imageColor4.setImageResource(0)
+                imageColor5.setImageResource(0)
 
-          }
+
+            }
             viewColor2.setOnClickListener {
+
                 selectedNoteColor = "#007C3F"
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(R.drawable.ic_check)
@@ -82,6 +85,7 @@ class AddNoteFragment : Fragment() {
                 imageColor5.setImageResource(0)
             }
             viewColor4.setOnClickListener {
+
                 selectedNoteColor = "#344CB7"
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
@@ -90,6 +94,7 @@ class AddNoteFragment : Fragment() {
                 imageColor5.setImageResource(0)
             }
             viewColor5.setOnClickListener {
+
                 selectedNoteColor = "#F55353"
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
@@ -97,9 +102,16 @@ class AddNoteFragment : Fragment() {
                 imageColor4.setImageResource(0)
                 imageColor5.setImageResource(R.drawable.ic_check)
             }
+            radioGroup.setOnCheckedChangeListener { group, checkedId ->
+                when (checkedId) {
+                    R.id.egitim -> selectedRadioState = "Eğitim"
+                    R.id.yasam -> selectedRadioState = "Yaşam"
+                    R.id.eglence -> selectedRadioState = "Eğlence"
+                    else -> selectedRadioState = "Diğer"
+                }
+            }
             addButton.setOnClickListener {
                 val title = noteTitle.text.toString()
-                val categoryText = category.text.toString()
                 val inside = note.text.toString()
                 val current = LocalDateTime.now()
                 val formatterDate = DateTimeFormatter.ofPattern("dd-MM-yyyy")
@@ -107,22 +119,23 @@ class AddNoteFragment : Fragment() {
                 val formattedDate = current.format(formatterDate)
                 val formattedTime = current.format(formatterTime)
 
-                if(title.isNotEmpty() && categoryText.isNotEmpty() && inside.isNotEmpty()){
+                if (title.isNotEmpty() &&  inside.isNotEmpty()) {
 
                     viewModel.addNote(
                         NoteModel(
                             noteTitle = title,
-                            noteCategory = categoryText,
+                            noteCategory = selectedRadioState!!,
                             noteInside = inside,
-                            noteColor = selectedNoteColor,
+                            noteColor = selectedNoteColor!!,
                             dateTime = formattedDate,
                             timeNow = formattedTime
                         )
                     )
                     val action = AddNoteFragmentDirections.addNoteToHomeFragment()
                     findNavController().navigate(action)
-                }else{
-                    Toast.makeText(context,"Lütfen Boş Alanları Doldurun",Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(context, "Lütfen Boş Alanları Doldurun", Toast.LENGTH_LONG)
+                        .show()
                 }
 
             }

@@ -2,7 +2,7 @@
 <resources>
     <color name="primaryColor">#1fad6b</color>
     <color name="primaryLightColor">#5fe09a</color>
-    <color name="primaryDarkColor">#007c3f</color>
+    <color name="primaryDarkColor">#01974D</color>
     <color name="primaryTextColor">#000000</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
@@ -29,5 +29,6 @@
     <color name="base_color_nineth">#FFB2A6</color>
     <color name="base_color_tenth">#9ADCFF</color>
     <color name="base_color_eleventh">#282829</color>
+    <color name="buttonColor">#02B55C</color>
 
 </resources>

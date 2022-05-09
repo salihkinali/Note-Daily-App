@@ -1,0 +1,46 @@
+package com.salihkinali.notedailyapp.view.fragment
+
+import android.content.Context
+import android.os.Bundle
+import android.os.Handler
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.salihkinali.notedailyapp.R
+import com.salihkinali.notedailyapp.databinding.FragmentSplashScreenBinding
+
+
+class SplashScreenFragment : Fragment() {
+    private var _binding: FragmentSplashScreenBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentSplashScreenBinding.inflate(inflater, container, false)
+        Handler().postDelayed({
+            if(onBoarding()){
+                val action = SplashScreenFragmentDirections.splashToViewPagerAction()
+                findNavController().navigate(action)
+            }else{
+                val action = SplashScreenFragmentDirections.splashToHomeAction()
+                findNavController().navigate(action)
+            }
+
+        },3000)
+        return binding.root
+    }
+    private fun onBoarding():Boolean{
+        val sharedPref = requireActivity().getSharedPreferences("BoardingScreen", Context.MODE_PRIVATE)
+        return sharedPref.getBoolean("isFirstTime",true)
+    }
+}
+

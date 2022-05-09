@@ -1,4 +1,4 @@
-package com.salihkinali.notedailyapp.view
+package com.salihkinali.notedailyapp.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,7 +25,9 @@ class MainActivity : AppCompatActivity() {
                 else -> hideBottomNav()
             }
         }
+
     }
+
 
     private fun hideBottomNav() {
         binding.bottomNavigation.visibility = View.GONE

@@ -1,4 +1,4 @@
-package com.salihkinali.notedailyapp.view
+package com.salihkinali.notedailyapp.view.fragment
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -100,6 +100,8 @@ class NoteDetailFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 
 
 }

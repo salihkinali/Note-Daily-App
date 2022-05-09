@@ -1,4 +1,4 @@
-package com.salihkinali.notedailyapp.view
+package com.salihkinali.notedailyapp.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

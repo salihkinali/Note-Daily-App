@@ -33,11 +33,13 @@ class NoteViewModel(val dbDao: NoteDao, application: Application) : AndroidViewM
     fun updateNote(note: NoteModel){
         viewModelScope.launch {
             dbDao.updateNote(note)
+            getNotes()
         }
     }
     fun deleteNote(note: NoteModel){
         viewModelScope.launch {
             dbDao.deleteNote(note)
+            getNotes()
         }
     }
 }

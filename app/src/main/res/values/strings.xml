@@ -16,4 +16,14 @@
     <string name="home">Home</string>
     <string name="sil">Sil</string>
     <string name="duzenle">Düzenle</string>
+    <string name="haydi_baslayalim">Henüz Bir not eklenmedi. Haydi Başlayalım!</string>
+    <string name="note_daily"><![CDATA[Note&Daily]]></string>
+    <string name="basla">BAŞLA</string>
+    <string name="geri">GERİ</string>
+    <string name="ileri">İLERİ</string>
+    <string name="previous">GERİ</string>
+    <string name="daily_life">Günlük Hayatta Not Alma</string>
+    <string name="explain">Hayatın her anında birşeyler keşfedip onları kaydetmek isteriz. Hayatın her anını Note Daily ile yakalayın.</string>
+    <string name="every_plannig">Hayatınızın Her Anını Planlayın</string>
+    <string name="discover">Haydi Uygulamayı Keşfedelim...</string>
 </resources>

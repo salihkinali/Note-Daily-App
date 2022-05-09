@@ -14,13 +14,28 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/drawable/carditem_design.xml" value="0.1545" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/drawable/ic_baseline_drive_file_rename_outline_24.xml" value="0.1545" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/drawable/ic_point.xml" value="0.1545" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/drawable/moment.xml" value="0.1545" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/drawable/moment2.xml" value="0.1545" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/drawable/view.xml" value="0.1545" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/font/.xml" value="0.1" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/activity_main.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/activity_on_boarding.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.264" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_add_list.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_add_note.xml" value="0.4" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_home.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_first.xml" value="0.17421875" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_first_screen.xml" value="0.17421875" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_home.xml" value="0.4" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_note.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_note_detail.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_on_boarding1.xml" value="0.25" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_on_boarding2.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_on_boarding3.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_screen_slide.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_second.xml" value="0.17421875" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_splash_screen.xml" value="0.17421875" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_third.xml" value="0.163671875" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/fragment_view_pager.xml" value="0.17421875" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/layout/item_card_design.xml" value="0.24575311438278596" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/NoteDailyApp/app/src/main/res/menu/popuo_menu.xml" value="0.23229166666666667" />

@@ -1,59 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:gravity="center"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.HomeFragment">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".view.fragment.HomeFragment">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/noteTitle"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/noteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10dp"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="@string/note_title"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColorHint="@color/text_hint_color"
+            tools:layout_editor_absoluteX="10dp"
+            tools:layout_editor_absoluteY="188dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10dp"
-        android:ems="10"
-        android:hint="@string/note_title"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColorHint="@color/text_hint_color"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="188dp" />
+        android:orientation="horizontal"
+        android:textAlignment="textStart">
 
-    <androidx.appcompat.widget.AppCompatEditText
+        <RadioButton
+            android:id="@+id/egitim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:layout_weight="1"
+            android:buttonTint="#4CAF50"
+            android:checked="true"
+            android:text="Eğitim"
+            android:textColorHighlight="#4CAF50"
+            android:textColorLink="#4CAF50"
+            app:useMaterialThemeColors="false" />
 
-        android:id="@+id/category"
+        <RadioButton
+            android:id="@+id/yasam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:layout_weight="1"
+            android:buttonTint="#4CAF50"
+            android:text="Yaşam" />
+
+        <RadioButton
+            android:id="@+id/eglence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:layout_weight="1"
+            android:buttonTint="#4CAF50"
+            android:text="Eğlence" />
+
+        <RadioButton
+            android:id="@+id/diger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:layout_weight="1"
+            android:buttonTint="#4CAF50"
+            android:text="Diğer" />
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_margin="@dimen/_10dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/add_kategorisi"
-        android:minHeight="48dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/text_hint_color"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="256dp" />
+        android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/note"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10dp"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="@string/add_note"
-        android:inputType="textPersonName"
-        android:textAlignment="viewStart"
-        android:textColor="@color/black"
-        android:textColorHint="@color/text_hint_color" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/note"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_10dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="@string/add_note"
+            android:inputType="textPersonName"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10dp"
+        android:background="#A8EDEDED"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/_10dp">
 
         <FrameLayout
             android:layout_width="0dp"
@@ -72,10 +120,10 @@
                 android:layout_height="40dp"
                 android:padding="@dimen/_10dp"
                 android:src="@drawable/ic_check"
-                app:tint="@color/white"
-                 />
+                app:tint="@color/white" />
 
         </FrameLayout>
+
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -95,6 +143,7 @@
                 app:tint="@color/white" />
 
         </FrameLayout>
+
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -113,6 +162,7 @@
                 app:tint="@color/white" />
 
         </FrameLayout>
+
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -123,6 +173,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/background_note_color_4" />
+
             <ImageView
                 android:id="@+id/imageColor4"
                 android:layout_width="40dp"
@@ -131,6 +182,7 @@
                 app:tint="@color/white" />
 
         </FrameLayout>
+
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -141,6 +193,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/background_note_color_5" />
+
             <ImageView
                 android:id="@+id/imageColor5"
                 android:layout_width="40dp"
@@ -149,13 +202,14 @@
                 app:tint="@color/white" />
 
         </FrameLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pick_up_color"
+            android:textColor="@color/base_color_sixth"
             android:textSize="13dp"
-            android:textStyle="bold"
-            android:textColor="@color/base_color_sixth"/>
+            android:textStyle="bold" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

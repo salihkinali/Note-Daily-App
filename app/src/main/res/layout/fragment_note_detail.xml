@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".view.HomeFragment">
+    tools:context=".view.fragment.HomeFragment">
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/noteTitle"
