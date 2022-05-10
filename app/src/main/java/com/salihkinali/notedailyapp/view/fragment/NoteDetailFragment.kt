@@ -1,26 +1,33 @@
 package com.salihkinali.notedailyapp.view.fragment
 
 import android.app.AlertDialog
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.databese.NoteDatabese
 import com.salihkinali.notedailyapp.databinding.FragmentNoteDetailBinding
 import com.salihkinali.notedailyapp.model.NoteModel
 import com.salihkinali.notedailyapp.viewmodel.NoteViewModel
 import com.salihkinali.notedailyapp.viewmodel.NoteViewModelFactory
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class NoteDetailFragment : Fragment() {
     private var _binding: FragmentNoteDetailBinding? = null
     private val binding get() = _binding!!
     private val args: NoteDetailFragmentArgs by navArgs()
+    private var selectedNoteColor: String = "#282829"
+    private var selectedRadioState: String = "Eğitim"
     private lateinit var notes: NoteModel
     private lateinit var db: NoteDatabese
     private lateinit var viewModel: NoteViewModel
@@ -50,46 +57,105 @@ class NoteDetailFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+
             noteTitle.setText(notes.noteTitle)
-            category.setText(notes.noteCategory)
-             note.setText(notes.noteInside)
+            when (notes.noteCategory) {
+                "Eğitim" -> egitim.isChecked = true
+                "Yaşam" -> yasam.isChecked = true
+                "Eğlence" -> eglence.isChecked = true
+                else -> diger.isChecked = true
+            }
+            when (notes.noteColor) {
+
+                "#282829" -> imageColor1.setImageResource(R.drawable.ic_check)
+                "#007C3F" -> imageColor2.setImageResource(R.drawable.ic_check)
+                "#F6F54D" -> imageColor3.setImageResource(R.drawable.ic_check)
+                "#344CB7" -> imageColor4.setImageResource(R.drawable.ic_check)
+                else -> imageColor5.setImageResource(R.drawable.ic_check)
+            }
+            note.setText(notes.noteInside)
+            viewColor1.setOnClickListener {
+                selectedNoteColor = "#282829"
+                imageColor1.setImageResource(R.drawable.ic_check)
+                imageColor2.setImageResource(0)
+                imageColor3.setImageResource(0)
+                imageColor4.setImageResource(0)
+                imageColor5.setImageResource(0)
+            }
+            viewColor2.setOnClickListener {
+                selectedNoteColor = "#007C3F"
+                imageColor1.setImageResource(0)
+                imageColor2.setImageResource(R.drawable.ic_check)
+                imageColor3.setImageResource(0)
+                imageColor4.setImageResource(0)
+                imageColor5.setImageResource(0)
+            }
+            viewColor3.setOnClickListener {
+                selectedNoteColor = "#F6F54D"
+                imageColor1.setImageResource(0)
+                imageColor2.setImageResource(0)
+                imageColor3.setImageResource(R.drawable.ic_check)
+                imageColor4.setImageResource(0)
+                imageColor5.setImageResource(0)
+            }
+            viewColor4.setOnClickListener {
+                selectedNoteColor = "#344CB7"
+                imageColor1.setImageResource(0)
+                imageColor2.setImageResource(0)
+                imageColor3.setImageResource(0)
+                imageColor4.setImageResource(R.drawable.ic_check)
+                imageColor5.setImageResource(0)
+            }
+            viewColor5.setOnClickListener {
+                selectedNoteColor = "#F55353"
+                imageColor1.setImageResource(0)
+                imageColor2.setImageResource(0)
+                imageColor3.setImageResource(0)
+                imageColor4.setImageResource(0)
+                imageColor5.setImageResource(R.drawable.ic_check)
+            }
+            radioGroup.setOnCheckedChangeListener { group, checkedId ->
+                when (checkedId) {
+                    R.id.egitim -> selectedRadioState = "Eğitim"
+                    R.id.yasam -> selectedRadioState = "Yaşam"
+                    R.id.eglence -> selectedRadioState = "Eğlence"
+                    else -> selectedRadioState = "Diğer"
+                }
+            }
 
             updateButton.setOnClickListener {
 
-                    notes.noteTitle = noteTitle.text.toString()
-                    notes.noteCategory = category.text.toString()
-                    notes.noteInside = note.text.toString()
+                val current = LocalDateTime.now()
+                val formatterDate = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+                val formatterTime = DateTimeFormatter.ofPattern("HH:mm")
+                val formattedDate = current.format(formatterDate)
+                val formattedTime = current.format(formatterTime)
+                val title = noteTitle.text.toString()
+                val inside = note.text.toString()
 
-                    viewModel.updateNote(notes)
+                if(title.isNotEmpty() && inside.isNotEmpty()){
+
+                    viewModel.updateNote(NoteModel(
+                        noteTitle = title,
+                        noteCategory = selectedRadioState,
+                        noteInside = inside,
+                        noteColor = selectedNoteColor,
+                        dateTime = formattedDate,
+                        timeNow = formattedTime
+                    ))
                     val action = NoteDetailFragmentDirections.actionDetailToHomeFragment()
                     findNavController().navigate(action)
-            }
-            deleteButton.setOnClickListener {
-                val builder = AlertDialog.Builder(context)
-                builder.setTitle(R.string.dialogTitle)
-                builder.setMessage(R.string.dialogMessage)
-                builder.setIcon(android.R.drawable.ic_dialog_alert)
 
-                builder.setPositiveButton("Yes"){dialogInterface, which ->
-                    viewModel.deleteNote(notes)
-                    val action = NoteDetailFragmentDirections.actionDetailToHomeFragment()
-                    findNavController().navigate(action)
-                    Toast.makeText(context,"Note Deleted",Toast.LENGTH_LONG).show()
+                }else{
+                    Snackbar.make(it,"Lütfen Boş Alan Bırakmayın.",Snackbar.LENGTH_LONG).show()
                 }
 
-                builder.setNegativeButton("No"){dialogInterface, which ->
-
-                }
-                val alertDialog: AlertDialog = builder.create()
-                // Set other dialog properties
-                alertDialog.setCancelable(false)
-                alertDialog.show()
-
-
             }
+
 
         }
 
@@ -100,8 +166,6 @@ class NoteDetailFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 
 
 }

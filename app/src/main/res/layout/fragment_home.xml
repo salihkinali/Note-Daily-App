@@ -15,8 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
@@ -56,6 +55,7 @@
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/primaryDarkColor"
         android:clickable="true"
+        android:contentDescription="TODO"
         android:focusable="true"
         android:padding="@dimen/_20dp"
         android:src="@drawable/ic_write"
@@ -67,21 +67,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:tint="@color/white" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#087841"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:contentInsetLeft="@dimen/_10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:logo="@drawable/logo"
-        app:title="Note Daily "
-        app:titleMarginStart="5dp"
-        app:titleTextAppearance="?android:attr/textAppearanceLarge"
-        app:titleTextColor="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

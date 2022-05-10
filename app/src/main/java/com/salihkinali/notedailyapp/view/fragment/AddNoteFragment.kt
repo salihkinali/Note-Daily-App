@@ -23,7 +23,7 @@ import java.time.format.DateTimeFormatter
 class AddNoteFragment : Fragment() {
     private var _binding: FragmentAddNoteBinding? = null
     private val binding get() = _binding!!
-    private var selectedNoteColor: String? = null
+    private var selectedNoteColor: String? = "#282829"
     private var selectedRadioState: String? = "Eğitim"
     private lateinit var db: NoteDatabese
     private lateinit var viewModel: NoteViewModel

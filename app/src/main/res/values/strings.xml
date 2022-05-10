@@ -26,4 +26,9 @@
     <string name="explain">Hayatın her anında birşeyler keşfedip onları kaydetmek isteriz. Hayatın her anını Note Daily ile yakalayın.</string>
     <string name="every_plannig">Hayatınızın Her Anını Planlayın</string>
     <string name="discover">Haydi Uygulamayı Keşfedelim...</string>
+    <string name="title"><![CDATA[Note & Daily]]></string>
+    <string name="education">Eğitim</string>
+    <string name="life">Yaşam</string>
+    <string name="fun">Eğlence</string>
+    <string name="another">Diğer</string>
 </resources>

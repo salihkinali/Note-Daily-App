@@ -6,7 +6,7 @@
     app:startDestination="@id/splashScreenFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/homeFragmentScreen"
         android:name="com.salihkinali.notedailyapp.view.fragment.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home"
@@ -34,7 +34,7 @@
         >
         <action
             android:id="@+id/addNote_to_homeFragment"
-            app:destination="@id/homeFragment"
+            app:destination="@id/homeFragmentScreen"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
     </fragment>
@@ -49,7 +49,7 @@
             app:argType="com.salihkinali.notedailyapp.model.NoteModel" />
         <action
             android:id="@+id/actionDetail_toHomeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragmentScreen" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_splash_screen"
@@ -63,7 +63,7 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/splash_to_homeAction"
-            app:destination="@id/homeFragment"
+            app:destination="@id/homeFragmentScreen"
             app:popUpTo="@id/splashScreenFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -74,8 +74,13 @@
         tools:layout="@layout/fragment_view_pager" >
         <action
             android:id="@+id/viewpager_to_splashAction"
-            app:destination="@id/homeFragment"
+            app:destination="@id/homeFragmentScreen"
             app:popUpTo="@id/viewPagerFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/addListFragment"
+        android:name="com.salihkinali.notedailyapp.view.fragment.AddListFragment"
+        android:label="fragment_add_list"
+        tools:layout="@layout/fragment_add_list" />
 </navigation>
