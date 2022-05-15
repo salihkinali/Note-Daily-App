@@ -18,7 +18,7 @@ class SplashScreenFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.hide()
+
 
     }
 
@@ -26,6 +26,7 @@ class SplashScreenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        (activity as AppCompatActivity).supportActionBar?.hide()
         _binding = FragmentSplashScreenBinding.inflate(inflater, container, false)
         Handler().postDelayed({
             if(onBoarding()){
@@ -34,6 +35,7 @@ class SplashScreenFragment : Fragment() {
             }else{
                 val action = SplashScreenFragmentDirections.splashToHomeAction()
                 findNavController().navigate(action)
+                showIt()
             }
 
         },3000)
@@ -44,7 +46,13 @@ class SplashScreenFragment : Fragment() {
         val sharedPref = requireActivity().getSharedPreferences("BoardingScreen", Context.MODE_PRIVATE)
         return sharedPref.getBoolean("isFirstTime",true)
     }
+    private fun showIt(){
+        (activity as AppCompatActivity).supportActionBar?.show()
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
 
 }
 

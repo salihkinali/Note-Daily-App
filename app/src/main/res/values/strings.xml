@@ -31,4 +31,5 @@
     <string name="life">Yaşam</string>
     <string name="fun">Eğlence</string>
     <string name="another">Diğer</string>
+    <string name="option_side">⋮</string>
 </resources>

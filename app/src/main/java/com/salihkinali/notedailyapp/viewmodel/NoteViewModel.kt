@@ -42,4 +42,5 @@ class NoteViewModel(val dbDao: NoteDao, application: Application) : AndroidViewM
             getNotes()
         }
     }
+
 }

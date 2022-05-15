@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.salihkinali.notedailyapp.R
@@ -25,6 +26,7 @@ class ThirdFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        (activity as AppCompatActivity).supportActionBar?.hide()
         _binding = FragmentThirdBinding.inflate(inflater,container,false)
         val viewpager = activity?.findViewById<ViewPager2>(R.id.pager)
         binding.startButton.setOnClickListener {

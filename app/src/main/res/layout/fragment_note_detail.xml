@@ -13,18 +13,18 @@
     >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:background="#A8EDEDED"
             android:id="@+id/noteTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_5dp"
             android:layout_margin="@dimen/_10dp"
+            android:background="#A8EDEDED"
             android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="@string/note_title"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:textColorHint="@color/text_hint_color"
+            android:padding="@dimen/_5dp"
+            android:textColorHint="#757575"
             tools:layout_editor_absoluteX="10dp"
             tools:layout_editor_absoluteY="188dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -76,7 +76,8 @@
             android:layout_marginEnd="@dimen/_10dp"
             android:layout_weight="1"
             android:buttonTint="#4CAF50"
-            android:text="@string/fun" />
+            android:text="@string/fun"
+            android:textColor="#2E7D32" />
 
         <RadioButton
             android:id="@+id/diger"
@@ -250,8 +251,8 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/updateButton"
         android:layout_width="match_parent"
-        android:layout_margin="@dimen/_10dp"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:background="@drawable/button_background_color"
         android:text="@string/update"
         android:textColor="@color/white"

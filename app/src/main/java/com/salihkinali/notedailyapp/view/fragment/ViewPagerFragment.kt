@@ -1,10 +1,11 @@
 package com.salihkinali.notedailyapp.view.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.salihkinali.notedailyapp.adapter.ViewPagerAdapter
 import com.salihkinali.notedailyapp.databinding.FragmentViewPagerBinding
 import com.salihkinali.notedailyapp.view.fragment.screens.FirstFragment
@@ -25,6 +26,7 @@ class ViewPagerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        (activity as AppCompatActivity).supportActionBar?.hide()
         _binding = FragmentViewPagerBinding.inflate(inflater, container, false)
         val fragmentList = arrayListOf<Fragment>(
             FirstFragment(),
@@ -46,6 +48,7 @@ class ViewPagerFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        (activity as AppCompatActivity).supportActionBar?.show()
         _binding = null
     }
 

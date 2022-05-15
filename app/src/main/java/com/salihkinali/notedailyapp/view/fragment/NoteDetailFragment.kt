@@ -126,27 +126,25 @@ class NoteDetailFragment : Fragment() {
                     else -> selectedRadioState = "Diğer"
                 }
             }
-
+            val current = LocalDateTime.now()
+            val formatterDate = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+            val formatterTime = DateTimeFormatter.ofPattern("HH:mm")
+            val formattedDate = current.format(formatterDate)
+            val formattedTime = current.format(formatterTime)
             updateButton.setOnClickListener {
 
-                val current = LocalDateTime.now()
-                val formatterDate = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-                val formatterTime = DateTimeFormatter.ofPattern("HH:mm")
-                val formattedDate = current.format(formatterDate)
-                val formattedTime = current.format(formatterTime)
                 val title = noteTitle.text.toString()
                 val inside = note.text.toString()
 
                 if(title.isNotEmpty() && inside.isNotEmpty()){
 
-                    viewModel.updateNote(NoteModel(
-                        noteTitle = title,
-                        noteCategory = selectedRadioState,
-                        noteInside = inside,
-                        noteColor = selectedNoteColor,
-                        dateTime = formattedDate,
-                        timeNow = formattedTime
-                    ))
+                    notes.noteTitle = title
+                    notes.noteCategory = selectedRadioState
+                    notes.noteColor = selectedNoteColor
+                    notes.noteInside = inside
+                    notes.dateTime = formattedDate
+                    notes.timeNow = formattedTime
+                    viewModel.updateNote(notes)
                     val action = NoteDetailFragmentDirections.actionDetailToHomeFragment()
                     findNavController().navigate(action)
 

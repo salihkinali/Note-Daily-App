@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.databinding.FragmentSecondBinding
@@ -22,6 +23,7 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        (activity as AppCompatActivity).supportActionBar?.hide()
         _binding = FragmentSecondBinding.inflate(inflater,container,false)
         val viewpager = activity?.findViewById<ViewPager2>(R.id.pager)
         binding.anotherNext.setOnClickListener {

@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.PopupMenu
+import androidx.core.view.get
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.adapter.NoteAdapter
 import com.salihkinali.notedailyapp.databese.NoteDatabese
 import com.salihkinali.notedailyapp.databinding.FragmentHomeBinding
@@ -22,7 +26,7 @@ class HomeFragment : Fragment() {
     private lateinit var noteList: List<NoteModel>
     private lateinit var db: NoteDatabese
     private lateinit var viewModel: NoteViewModel
-    private val adapter by lazy { NoteAdapter(requireContext(), viewModel) }
+    private val adapter by lazy { NoteAdapter(requireContext()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +64,25 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getAllNote()
+        adapter.onTodoClick = {notePosition,rvPosition ->
+            val popup = PopupMenu(requireContext(),binding.noteReyclerView[rvPosition].findViewById(
+                R.id.popup))
+            popup.inflate(R.menu.popup_menu)
+            popup.setOnMenuItemClickListener {
+                when(it.itemId){
+                    R.id.sil -> {viewModel.deleteNote(notePosition)
+                    true
+                    }
+                    R.id.duzenle -> {
+                        val action = HomeFragmentDirections.actionHomeToDetailNote(notePosition)
+                        findNavController().navigate(action)
+                        true
+                    }
+                    else -> false
+                }
+            }
+            popup.show()
+        }
         binding.addNoteButton.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeToAddNote()
             findNavController().navigate(action)
@@ -70,7 +93,6 @@ class HomeFragment : Fragment() {
     private fun getAllNote() {
         viewModel.noteList.observe(viewLifecycleOwner, Observer { noteLists ->
             noteList = noteLists
-            adapter.updateList(noteList)
             binding.apply {
                 if (noteList.isEmpty()) {
                     noteReyclerView.visibility = View.GONE

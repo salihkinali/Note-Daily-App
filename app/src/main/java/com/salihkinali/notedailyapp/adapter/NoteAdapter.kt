@@ -12,18 +12,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.databinding.ItemCardDesignBinding
 import com.salihkinali.notedailyapp.model.NoteModel
-import com.salihkinali.notedailyapp.view.HomeFragmentDirections
-import com.salihkinali.notedailyapp.viewmodel.NoteViewModel
+import com.salihkinali.notedailyapp.view.fragment.HomeFragmentDirections
+
 
 
 class NoteAdapter(
     private val mContext: Context,
-    private val viewModel: NoteViewModel,
-    private var noteList: List<NoteModel?>
+
 ) :
     RecyclerView.Adapter<NoteAdapter.CardViewHolder>() {
     class CardViewHolder(val itemCardDesignBinding: ItemCardDesignBinding) :
         RecyclerView.ViewHolder(itemCardDesignBinding.root)
+
+    private val noteList = ArrayList<NoteModel?>()
+
+    var onTodoClick: (NoteModel,Int) -> Unit = { noteModel: NoteModel, i: Int -> }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteAdapter.CardViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -69,48 +72,7 @@ class NoteAdapter(
                     noteInsideText.setTextColor(Color.parseColor("#282829"))
                 }
                 popup.setOnClickListener { popUpMenu ->
-                    val popup = PopupMenu(mContext, popup)
-                    popup.menuInflater.inflate(R.menu.popup_menu, popup.menu)
-                    popup.setOnMenuItemClickListener { item ->
-                        when (item.itemId) {
-
-                            R.id.sil -> {
-
-                                val builder = AlertDialog.Builder(mContext)
-                                builder.setTitle(R.string.dialogTitle)
-                                builder.setMessage(R.string.dialogMessage)
-                                builder.setIcon(android.R.drawable.ic_dialog_alert)
-
-                                builder.setPositiveButton("Yes") { dialogInterface, which ->
-                                    viewModel.deleteNote(note)
-                                    Toast.makeText(mContext, "Note Deleted", Toast.LENGTH_LONG)
-                                        .show()
-
-                                }
-
-                                builder.setNegativeButton("No") { dialogInterface, which ->
-
-                                }
-                                val alertDialog: AlertDialog = builder.create()
-                                // Set other dialog properties
-                                alertDialog.setCancelable(false)
-                                alertDialog.show()
-
-
-
-                                true
-                            }
-                            R.id.duzenle -> {
-                                note.let {
-                                    val action = HomeFragmentDirections.actionHomeToDetailNote(note)
-                                    Navigation.findNavController(popUpMenu).navigate(action)
-                                }
-                                true
-                            }
-                            else -> false
-                        }
-                    }
-                    popup.show()
+                   onTodoClick(note,position)
                 }
 
                 root.setOnLongClickListener { button ->
@@ -125,10 +87,11 @@ class NoteAdapter(
 
 
     }
+    fun updateList(updatedList: List<NoteModel>) {
+        noteList.clear()
+        noteList.addAll(updatedList)
+        notifyDataSetChanged()
+    }
 
     override fun getItemCount(): Int = noteList.size
 }
-
-
-
-
