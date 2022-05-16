@@ -33,9 +33,10 @@
         app:layout_constraintTop_toBottomOf="@id/fragmentContainerView"
         app:menu="@menu/bottom_nav_menu" />
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarMain"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
+        app:titleMarginStart="30dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:backgroundTint="#05A556"
@@ -47,7 +48,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:logo="@drawable/logo"
         app:title="@string/title"
-        android:titleMarginStart="12dp"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Body2"
         app:titleTextColor="#F6F5F5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

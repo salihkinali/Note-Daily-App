@@ -42,7 +42,7 @@
             android:layout_weight="1"
             android:buttonTint="#4CAF50"
             android:checked="true"
-            android:text="Eğitim"
+            android:text="@string/education"
             android:textColorHighlight="#4CAF50"
             android:textColorLink="#4CAF50"
             app:useMaterialThemeColors="false" />
@@ -54,7 +54,7 @@
             android:layout_marginEnd="@dimen/_10dp"
             android:layout_weight="1"
             android:buttonTint="#4CAF50"
-            android:text="Yaşam" />
+            android:text="@string/life" />
 
         <RadioButton
             android:id="@+id/eglence"
@@ -63,7 +63,7 @@
             android:layout_marginEnd="@dimen/_10dp"
             android:layout_weight="1"
             android:buttonTint="#4CAF50"
-            android:text="Eğlence" />
+            android:text="@string/fun" />
 
         <RadioButton
             android:id="@+id/diger"
@@ -72,24 +72,23 @@
             android:layout_marginEnd="@dimen/_10dp"
             android:layout_weight="1"
             android:buttonTint="#4CAF50"
-            android:text="Diğer" />
+            android:text="@string/another" />
     </RadioGroup>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
         android:layout_weight="1">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/note"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10dp"
-            android:layout_weight="1"
             android:backgroundTint="@color/white"
-            android:ems="10"
             android:hint="@string/add_note"
-            android:inputType="textPersonName"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
             android:textColorHint="@color/white" />

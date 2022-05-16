@@ -18,9 +18,13 @@ class NoteViewModel(val dbDao: NoteDao, application: Application) : AndroidViewM
     }
 
     private fun getNotes() {
-
         viewModelScope.launch {
             _noteList.value = dbDao.readAllNote()
+        }
+    }
+    fun searchWord(query:String) {
+        viewModelScope.launch {
+            _noteList.value = dbDao.searchData(query)
         }
     }
 

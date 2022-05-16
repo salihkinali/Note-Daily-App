@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/aFromZ"
+        android:title="@string/a_dan_z_ye_s_ralama"
+        />
+    <item
+        android:id="@+id/newFromOld"
+        android:title="@string/new_from_old"
+        />
+    <item
+        android:id="@+id/categoryUntilTill"
+        android:title="@string/category_until_till"
+        />
+
+</menu>

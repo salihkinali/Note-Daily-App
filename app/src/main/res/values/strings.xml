@@ -27,6 +27,9 @@
     <string name="every_plannig">Hayatınızın Her Anını Planlayın</string>
     <string name="discover">Haydi Uygulamayı Keşfedelim...</string>
     <string name="title"><![CDATA[Note & Daily]]></string>
+    <string name="a_dan_z_ye_s_ralama">A’dan Z’ye Sıralama</string>
+    <string name="new_from_old">Yeni\'den Eskiye Sıralama</string>
+    <string name="category_until_till">Kategoriye Göre Sıralama</string>
     <string name="education">Eğitim</string>
     <string name="life">Yaşam</string>
     <string name="fun">Eğlence</string>

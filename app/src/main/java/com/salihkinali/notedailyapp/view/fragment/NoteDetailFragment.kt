@@ -1,13 +1,12 @@
 package com.salihkinali.notedailyapp.view.fragment
 
-import android.app.AlertDialog
+
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -26,8 +25,8 @@ class NoteDetailFragment : Fragment() {
     private var _binding: FragmentNoteDetailBinding? = null
     private val binding get() = _binding!!
     private val args: NoteDetailFragmentArgs by navArgs()
-    private var selectedNoteColor: String = "#282829"
-    private var selectedRadioState: String = "Eğitim"
+    private lateinit var selectedNoteColor: String
+    private lateinit var selectedRadioState: String
     private lateinit var notes: NoteModel
     private lateinit var db: NoteDatabese
     private lateinit var viewModel: NoteViewModel
@@ -43,6 +42,8 @@ class NoteDetailFragment : Fragment() {
     ): View {
         _binding = FragmentNoteDetailBinding.inflate(inflater, container, false)
         notes = args.note
+        selectedNoteColor = notes.noteColor
+        selectedRadioState = notes.noteCategory
         val application = requireNotNull(this.activity).application
 
         val dbDao = NoteDatabese.getInstance(application)?.noteDatabeseDao

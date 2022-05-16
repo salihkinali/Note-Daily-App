@@ -1,10 +1,10 @@
 package com.salihkinali.notedailyapp.view.activity
-
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
-import androidx.navigation.Navigation
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.salihkinali.notedailyapp.R
@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
 
     private fun hideBottomNav() {
         binding.bottomNavigation.visibility = View.GONE

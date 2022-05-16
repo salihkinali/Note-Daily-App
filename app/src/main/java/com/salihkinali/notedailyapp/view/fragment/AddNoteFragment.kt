@@ -1,32 +1,36 @@
 package com.salihkinali.notedailyapp.view.fragment
 
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import androidx.core.content.PackageManagerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.databese.NoteDatabese
 import com.salihkinali.notedailyapp.databinding.FragmentAddNoteBinding
 import com.salihkinali.notedailyapp.model.NoteModel
-import com.salihkinali.notedailyapp.viewmodel.NoteViewModel
-import com.salihkinali.notedailyapp.viewmodel.NoteViewModelFactory
+import com.salihkinali.notedailyapp.viewmodel.AddNoteViewModel
+import com.salihkinali.notedailyapp.viewmodel.AddNoteViewModelFactory
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.jar.Manifest
 
 
 class AddNoteFragment : Fragment() {
     private var _binding: FragmentAddNoteBinding? = null
     private val binding get() = _binding!!
-    private var selectedNoteColor: String? = "#282829"
-    private var selectedRadioState: String? = "Eğitim"
     private lateinit var db: NoteDatabese
-    private lateinit var viewModel: NoteViewModel
+    private lateinit var viewModel: AddNoteViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         db = NoteDatabese.getInstance(requireContext())!!
@@ -38,15 +42,14 @@ class AddNoteFragment : Fragment() {
     ): View {
         _binding = FragmentAddNoteBinding.inflate(inflater, container, false)
 
-        val application = requireNotNull(this.activity).application
+        val dbDao = NoteDatabese.getInstance(requireContext())?.noteDatabeseDao
 
-        val dbDao = NoteDatabese.getInstance(application)?.noteDatabeseDao
-
-        val viewModelFactory = dbDao?.let { NoteViewModelFactory(it, application) }
+        val viewModelFactory = dbDao?.let {noteDao ->
+            AddNoteViewModelFactory(noteDao) }
 
         viewModel = viewModelFactory?.let {
 
-            ViewModelProvider(this, it)[NoteViewModel::class.java]
+            ViewModelProvider(this, it)[AddNoteViewModel::class.java]
         }!!
         return binding.root
     }
@@ -58,18 +61,17 @@ class AddNoteFragment : Fragment() {
         binding.apply {
 
             viewColor1.setOnClickListener {
-                selectedNoteColor = "#282829"
+
+                viewModel.choiseOne()
                 imageColor1.setImageResource(R.drawable.ic_check)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(0)
                 imageColor4.setImageResource(0)
                 imageColor5.setImageResource(0)
-
-
             }
             viewColor2.setOnClickListener {
 
-                selectedNoteColor = "#007C3F"
+                viewModel.choseTwo()
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(R.drawable.ic_check)
                 imageColor3.setImageResource(0)
@@ -77,7 +79,7 @@ class AddNoteFragment : Fragment() {
                 imageColor5.setImageResource(0)
             }
             viewColor3.setOnClickListener {
-                selectedNoteColor = "#F6F54D"
+                viewModel.choiseThree()
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(R.drawable.ic_check)
@@ -86,7 +88,7 @@ class AddNoteFragment : Fragment() {
             }
             viewColor4.setOnClickListener {
 
-                selectedNoteColor = "#344CB7"
+                viewModel.choiseFour()
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(0)
@@ -95,7 +97,7 @@ class AddNoteFragment : Fragment() {
             }
             viewColor5.setOnClickListener {
 
-                selectedNoteColor = "#F55353"
+                viewModel.choiseFive()
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(0)
@@ -104,12 +106,13 @@ class AddNoteFragment : Fragment() {
             }
             radioGroup.setOnCheckedChangeListener { group, checkedId ->
                 when (checkedId) {
-                    R.id.egitim -> selectedRadioState = "Eğitim"
-                    R.id.yasam -> selectedRadioState = "Yaşam"
-                    R.id.eglence -> selectedRadioState = "Eğlence"
-                    else -> selectedRadioState = "Diğer"
+                    R.id.egitim -> viewModel.selectONe()
+                    R.id.yasam -> viewModel.selectTwo()
+                    R.id.eglence -> viewModel.selectThree()
+                    else -> viewModel.selectFour()
                 }
             }
+
             addButton.setOnClickListener {
                 val title = noteTitle.text.toString()
                 val inside = note.text.toString()
@@ -121,16 +124,16 @@ class AddNoteFragment : Fragment() {
 
                 if (title.isNotEmpty() &&  inside.isNotEmpty()) {
 
-                    viewModel.addNote(
-                        NoteModel(
-                            noteTitle = title,
-                            noteCategory = selectedRadioState!!,
-                            noteInside = inside,
-                            noteColor = selectedNoteColor!!,
-                            dateTime = formattedDate,
-                            timeNow = formattedTime
-                        )
-                    )
+                    viewModel.addNote((
+                            NoteModel(
+                                noteTitle = title,
+                                noteCategory = viewModel.selectedRadioState!!,
+                                noteInside = inside,
+                                noteColor = viewModel.selectedNoteColor!!,
+                                dateTime = formattedDate,
+                                timeNow = formattedTime
+                            )
+                            ))
                     val action = AddNoteFragmentDirections.addNoteToHomeFragment()
                     findNavController().navigate(action)
                 } else {
@@ -141,6 +144,7 @@ class AddNoteFragment : Fragment() {
             }
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
