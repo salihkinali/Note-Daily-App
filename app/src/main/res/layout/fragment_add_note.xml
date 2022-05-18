@@ -10,14 +10,16 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/noteTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10dp"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/layout_decoration"
             android:ems="10"
             android:hint="@string/note_title"
             android:inputType="textPersonName"
@@ -30,6 +32,7 @@
     <RadioGroup
         android:id="@+id/radio_group"
         android:layout_width="wrap_content"
+        android:background="#A8EDEDED"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
@@ -85,13 +88,15 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/note"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:background="@drawable/layout_decoration"
+            android:layout_height="match_parent"
             android:layout_margin="@dimen/_10dp"
-            android:backgroundTint="@color/white"
             android:hint="@string/add_note"
-            android:textAlignment="viewStart"
+            android:textAlignment="textStart"
             android:textColor="@color/black"
-            android:textColorHint="@color/white" />
+            android:textColorHint="@color/white"
+            android:textDirection="locale" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat

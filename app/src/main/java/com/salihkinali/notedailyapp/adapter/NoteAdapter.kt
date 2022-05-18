@@ -1,5 +1,6 @@
 package com.salihkinali.notedailyapp.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -8,30 +9,32 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.databinding.ItemCardDesignBinding
 import com.salihkinali.notedailyapp.model.NoteModel
 import com.salihkinali.notedailyapp.view.fragment.HomeFragmentDirections
-
+import com.salihkinali.notedailyapp.view.fragment.NoteDetailFragment
 
 
 class NoteAdapter(
     private val mContext: Context,
 
-) :
+    ) :
     RecyclerView.Adapter<NoteAdapter.CardViewHolder>() {
     class CardViewHolder(val itemCardDesignBinding: ItemCardDesignBinding) :
         RecyclerView.ViewHolder(itemCardDesignBinding.root)
 
     private val noteList = ArrayList<NoteModel?>()
 
-    var onTodoClick: (NoteModel,Int) -> Unit = { noteModel: NoteModel, i: Int -> }
+    var onTodoClick: (NoteModel, Int) -> Unit = { noteModel: NoteModel, i: Int -> }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteAdapter.CardViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemCardDesignBinding = ItemCardDesignBinding.inflate(layoutInflater, parent, false)
-        return NoteAdapter.CardViewHolder(itemCardDesignBinding)
+        return CardViewHolder(itemCardDesignBinding)
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
@@ -72,14 +75,38 @@ class NoteAdapter(
                     noteInsideText.setTextColor(Color.parseColor("#282829"))
                 }
                 popup.setOnClickListener { popUpMenu ->
-                   onTodoClick(note,position)
+                    val popup = PopupMenu(mContext, popUpMenu)
+                    popup.inflate(R.menu.popup_menu)
+                    popup.setOnMenuItemClickListener {
+                        when (it.itemId) {
+                            R.id.sil -> {
+                                val alertView = AlertDialog.Builder(mContext)
+                                alertView.setMessage("Silmek İstediğinizden emin misiniz?")
+                                alertView.setTitle("Seçilen Dosya")
+                                alertView.setIcon(R.drawable.ic_check)
+                                alertView.setPositiveButton("Sil") { dialogInterface, i ->
+                                    onTodoClick(note, position)
+                                }
+                                alertView.setNegativeButton("İptal") { dialogInterface, i ->
+
+                                }
+                                alertView.create().show()
+
+                                true
+                            }
+                            R.id.duzenle -> {
+                                val action = HomeFragmentDirections.actionHomeToDetailNote(note)
+                                popUpMenu.findNavController().navigate(action)
+                                true
+                            }
+                            else -> false
+                        }
+                    }
+                    popup.show()
                 }
 
                 root.setOnLongClickListener { button ->
-                    note.let {
-                        val action = HomeFragmentDirections.actionHomeToDetailNote(note)
-                        Navigation.findNavController(button).navigate(action)
-                    }
+                    Toast.makeText(mContext, "Dizi Sırası: ${position}", Toast.LENGTH_SHORT).show()
                     true
                 }
             }
@@ -87,6 +114,8 @@ class NoteAdapter(
 
 
     }
+
+    @SuppressLint("NotifyDataSetChanged")
     fun updateList(updatedList: List<NoteModel>) {
         noteList.clear()
         noteList.addAll(updatedList)

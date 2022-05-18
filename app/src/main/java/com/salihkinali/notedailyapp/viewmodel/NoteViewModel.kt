@@ -31,6 +31,7 @@ class NoteViewModel(val dbDao: NoteDao, application: Application) : AndroidViewM
     fun addNote(note: NoteModel){
         viewModelScope.launch {
             dbDao.insertNote(note)
+            getNotes()
         }
     }
 

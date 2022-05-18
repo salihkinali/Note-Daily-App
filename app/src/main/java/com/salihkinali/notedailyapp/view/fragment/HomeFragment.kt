@@ -1,15 +1,10 @@
 package com.salihkinali.notedailyapp.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.get
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -58,43 +53,11 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.noteReyclerView.layoutManager =
-            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        //binding.noteReyclerView.setHasFixedSize(true)
+            LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
         binding.noteReyclerView.adapter = adapter
         getAllNote()
         adapter.onTodoClick = { notePosition, rvPosition ->
-            val popup = PopupMenu(
-                requireContext(), binding.noteReyclerView[rvPosition].findViewById(
-                    R.id.popup
-                )
-            )
-            popup.inflate(R.menu.popup_menu)
-            popup.setOnMenuItemClickListener {
-                when (it.itemId) {
-                    R.id.sil -> {
-                        val alertView = AlertDialog.Builder(requireContext())
-                        alertView.setMessage("Silmek İstediğinizden emin misiniz?")
-                        alertView.setTitle("Seçilen Dosya")
-                        alertView.setIcon(R.drawable.ic_check)
-                        alertView.setPositiveButton("Sil") { dialogInterface, i ->
-                            viewModel.deleteNote(notePosition)
-                        }
-                        alertView.setNegativeButton("İptal") { dialogInterface, i ->
-
-                        }
-                        alertView.create().show()
-
-                        true
-                    }
-                    R.id.duzenle -> {
-                        val action = HomeFragmentDirections.actionHomeToDetailNote(notePosition)
-                        findNavController().navigate(action)
-                        true
-                    }
-                    else -> false
-                }
-            }
-            popup.show()
+          viewModel.addNote(notePosition)
         }
         binding.addNoteButton.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeToAddNote()
@@ -112,6 +75,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.filter -> {
@@ -124,7 +88,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     private fun getAllNote() {
-        viewModel.noteList.observe(viewLifecycleOwner, Observer { noteLists ->
+        viewModel.noteList.observe(viewLifecycleOwner) { noteLists ->
             noteList = noteLists
             adapter.updateList(noteList)
             binding.apply {
@@ -141,7 +105,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
                 }
 
             }
-        })
+        }
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
