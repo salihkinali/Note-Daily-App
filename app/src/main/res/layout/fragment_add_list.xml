@@ -19,6 +19,7 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/todoActionButton"
         android:layout_width="wrap_content"
+        android:backgroundTint="#01B108"
         android:layout_height="wrap_content"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="24dp"

@@ -10,7 +10,9 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.adapter.TodoAdapter
@@ -55,7 +57,7 @@ class AddListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //Adapter bağlama işi burda yapılacak
         binding.addTodoRecyclerView.layoutManager =
-            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         binding.addTodoRecyclerView.adapter = adapter
         viewModel.todoList.observe(viewLifecycleOwner) {
            adapter.submitList(it)

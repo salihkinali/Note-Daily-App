@@ -2,7 +2,6 @@ package com.salihkinali.notedailyapp.view.fragment
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
@@ -76,25 +75,6 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.aFromZ -> {
-                viewModel.shortFromAtoZ()
-                return true
-            }
-            R.id.newFromOld -> {
-                Toast.makeText(requireContext(), "Yeniden Eskiye göre Filtreye Tıklandı.", Toast.LENGTH_SHORT).show()
-                return true
-            }
-            R.id.categoryUntilTill -> {
-                viewModel.shortUntilCategory()
-                return true
-            }
-            else -> return super.onOptionsItemSelected(item)
-        }
-
-    }
-
     private fun getAllNote() {
         viewModel.noteList.observe(viewLifecycleOwner) { noteLists ->
             noteList = noteLists
@@ -109,9 +89,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
                     animationView.visibility = View.GONE
                     animationTextView.visibility = View.GONE
 
-
                 }
-
             }
         }
     }

@@ -17,26 +17,33 @@
             android:id="@+id/todoText"
             style="@style/addList"
             android:layout_width="0dp"
-            android:height="40dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/archivo"
             android:padding="@dimen/_5dp"
             android:text="TextView"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/deleteButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/dateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:text="Belirtilen Zaman Aralığı: 23/12/2022"
+            app:layout_constraintStart_toStartOf="@+id/todoText"
+            app:layout_constraintTop_toBottomOf="@+id/todoText" />
+
         <ImageView
             android:id="@+id/deleteButton"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_margin="@dimen/_10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/todoText"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_trash"
             app:tint="@color/black" />

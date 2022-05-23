@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.databinding.CardDesignRowBinding
 import com.salihkinali.notedailyapp.model.TodoModel
@@ -27,8 +28,10 @@ class TodoAdapter : ListAdapter<TodoModel, TodoAdapter.ViewHolder>(TodoDiffUtilC
             cardview.animation = android.view.animation.AnimationUtils.loadAnimation(holder.cardDesignRowBinding.cardview.context,
             R.anim.recyclerview_animation)
             todoText.text = item.addTodo
+            dateText.text = "Belirtilen Zaman Aralığı : ${item.dateTodo}"
             deleteButton.setOnClickListener {
                 onTodoClick(item.id)
+                Snackbar.make(it,"Yapılacaklar Listesinden Silindi.",2000).show()
             }
         }
     }

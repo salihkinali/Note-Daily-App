@@ -1,6 +1,8 @@
 package com.salihkinali.notedailyapp.adapter
 
 import android.annotation.SuppressLint
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -52,7 +54,6 @@ class NoteAdapter(
                     lines.setBackgroundColor(Color.parseColor("#273577"))
                 }
 
-
                 noteTitleText.text = note.noteTitle
                 noteCategoryText.text = note.noteCategory
                 noteInsideText.text = note.noteInside
@@ -94,6 +95,16 @@ class NoteAdapter(
                             R.id.duzenle -> {
                                 val action = HomeFragmentDirections.actionHomeToDetailNote(note)
                                 popUpMenu.findNavController().navigate(action)
+                                val clipboard = cardItem.context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                                val clip: ClipData = ClipData.newPlainText("simple text", "Hello, World!")
+                                clipboard.setPrimaryClip(clip)
+                                true
+                            }
+                            R.id.copy -> {
+                                val clipboard = cardItem.context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                                val clip: ClipData = ClipData.newPlainText("Notun Kendisi", note.noteInside)
+                                clipboard.setPrimaryClip(clip)
+                                Toast.makeText(mContext,"Metin Kopyalandı.",Toast.LENGTH_SHORT).show()
                                 true
                             }
                             else -> false
@@ -111,7 +122,6 @@ class NoteAdapter(
 
 
     }
-
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(updatedList: List<NoteModel>) {
         noteList.clear()

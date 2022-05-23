@@ -6,7 +6,7 @@
          android:duration="500"
          />-->
     <scale
-        android:duration="400"
+        android:duration="300"
         android:fromXScale="0.0"
         android:fromYScale="0.0"
         android:toXScale="1.0"

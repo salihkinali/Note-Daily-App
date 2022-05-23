@@ -4,4 +4,7 @@
         android:title="@string/sil"/>
     <item android:id="@+id/duzenle"
         android:title="@string/duzenle"/>
+    <item android:id="@+id/copy"
+        android:icon="@drawable/ic_copy"
+        android:title="Kopyala"/>
 </menu>

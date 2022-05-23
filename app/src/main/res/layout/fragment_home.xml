@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/primaryDarkColor"
+        android:backgroundTint="#E2089E54"
         android:clickable="true"
         android:contentDescription="TODO"
         android:focusable="true"

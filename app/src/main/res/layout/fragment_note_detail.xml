@@ -245,7 +245,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:background="@drawable/button_background_color"
+        android:background="@drawable/bottom_nav"
         android:text="@string/update"
         android:textColor="@color/white"
         android:textSize="16sp"
