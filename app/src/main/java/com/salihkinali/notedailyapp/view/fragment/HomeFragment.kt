@@ -56,8 +56,8 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
         binding.noteReyclerView.adapter = adapter
         getAllNote()
-        adapter.onTodoClick = { notePosition, rvPosition ->
-          viewModel.addNote(notePosition)
+        adapter.onNoteClick = { notePosition, rvPosition ->
+          viewModel.deleteNote(notePosition)
         }
         binding.addNoteButton.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeToAddNote()
@@ -78,8 +78,16 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.filter -> {
-                Toast.makeText(requireContext(), "Filtreye Tıklandı.", Toast.LENGTH_SHORT).show()
+            R.id.aFromZ -> {
+                viewModel.shortFromAtoZ()
+                return true
+            }
+            R.id.newFromOld -> {
+                Toast.makeText(requireContext(), "Yeniden Eskiye göre Filtreye Tıklandı.", Toast.LENGTH_SHORT).show()
+                return true
+            }
+            R.id.categoryUntilTill -> {
+                viewModel.shortUntilCategory()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

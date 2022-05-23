@@ -48,4 +48,15 @@ class NoteViewModel(val dbDao: NoteDao, application: Application) : AndroidViewM
         }
     }
 
+    fun shortFromAtoZ() {
+        viewModelScope.launch {
+            _noteList.value =  dbDao.shortFromAtoZ()
+        }
+    }
+    fun shortUntilCategory(){
+        viewModelScope.launch {
+            _noteList.value = dbDao.shortUntilCategory()
+        }
+    }
+
 }

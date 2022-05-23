@@ -2,7 +2,7 @@ package com.salihkinali.notedailyapp.view.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,18 +28,22 @@ class SplashScreenFragment : Fragment() {
     ): View {
         (activity as AppCompatActivity).supportActionBar?.hide()
         _binding = FragmentSplashScreenBinding.inflate(inflater, container, false)
-        Handler().postDelayed({
-            if(onBoarding()){
-                val action = SplashScreenFragmentDirections.splashToViewPagerAction()
-                findNavController().navigate(action)
-            }else{
-                val action = SplashScreenFragmentDirections.splashToHomeAction()
-                findNavController().navigate(action)
-                showIt()
+
+        val timer = object :CountDownTimer(3000,1000){
+            override fun onTick(p0: Long) {
             }
-
-        },3000)
-
+            override fun onFinish() {
+                if(onBoarding()){
+                    val action = SplashScreenFragmentDirections.splashToViewPagerAction()
+                    findNavController().navigate(action)
+                }else{
+                    val action = SplashScreenFragmentDirections.splashToHomeAction()
+                    findNavController().navigate(action)
+                    showIt()
+                }
+            }
+        }
+        timer.start()
         return binding.root
     }
     private fun onBoarding():Boolean{
@@ -49,10 +53,5 @@ class SplashScreenFragment : Fragment() {
     private fun showIt(){
         (activity as AppCompatActivity).supportActionBar?.show()
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
-
 }
 

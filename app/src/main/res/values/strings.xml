@@ -35,4 +35,6 @@
     <string name="fun">Eğlence</string>
     <string name="another">Diğer</string>
     <string name="option_side">⋮</string>
+    <string name="todo_add">Yapılacakları Giriniz</string>
+    <string name="date_time">Tarih Giriniz</string>
 </resources>

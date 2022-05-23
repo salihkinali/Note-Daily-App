@@ -6,11 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.salihkinali.notedailyapp.model.NoteDao
 import com.salihkinali.notedailyapp.model.NoteModel
+import com.salihkinali.notedailyapp.model.TodoDao
+import com.salihkinali.notedailyapp.model.TodoModel
 
-@Database(entities = [NoteModel::class], version = 1, exportSchema = false)
+@Database(entities = [NoteModel::class,TodoModel::class], version = 2, exportSchema = false)
 abstract class NoteDatabese : RoomDatabase(){
 
     abstract val noteDatabeseDao: NoteDao
+    abstract val todoDatabasedDao: TodoDao
 
     companion object{
        private var INSTANCE: NoteDatabese? = null

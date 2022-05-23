@@ -19,4 +19,10 @@ interface NoteDao {
 
     @Query("SELECT * FROM notes_table WHERE note_title LIKE :searchQuery OR note_category LIKE :searchQuery")
     suspend fun searchData(searchQuery: String): List<NoteModel>
+
+    @Query("SELECT * FROM notes_table ORDER BY note_title ASC")
+    suspend fun shortFromAtoZ():List<NoteModel>
+
+    @Query("SELECT * FROM notes_table ORDER BY note_category DESC")
+    suspend fun shortUntilCategory():List<NoteModel>
 }

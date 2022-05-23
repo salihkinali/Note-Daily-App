@@ -8,15 +8,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.databinding.ItemCardDesignBinding
 import com.salihkinali.notedailyapp.model.NoteModel
 import com.salihkinali.notedailyapp.view.fragment.HomeFragmentDirections
-import com.salihkinali.notedailyapp.view.fragment.NoteDetailFragment
 
 
 class NoteAdapter(
@@ -29,7 +26,7 @@ class NoteAdapter(
 
     private val noteList = ArrayList<NoteModel?>()
 
-    var onTodoClick: (NoteModel, Int) -> Unit = { noteModel: NoteModel, i: Int -> }
+    var onNoteClick: (NoteModel, Int) -> Unit = { noteModel: NoteModel, i: Int -> }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -85,7 +82,7 @@ class NoteAdapter(
                                 alertView.setTitle("Seçilen Dosya")
                                 alertView.setIcon(R.drawable.ic_check)
                                 alertView.setPositiveButton("Sil") { dialogInterface, i ->
-                                    onTodoClick(note, position)
+                                    onNoteClick(note, position)
                                 }
                                 alertView.setNegativeButton("İptal") { dialogInterface, i ->
 

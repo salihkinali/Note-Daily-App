@@ -55,8 +55,8 @@
                 android:layout_width="20dp"
                 android:layout_height="30dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="@dimen/_10dp"
-                android:layout_marginEnd="@dimen/_10dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="7dp"
                 android:gravity="center"
                 android:text="@string/option_side"
                 android:textAppearance="?android:textAppearanceLarge"
@@ -94,10 +94,10 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/ic_datetime"
                 android:backgroundTint="@color/black"
                 app:layout_constraintStart_toStartOf="@id/lines"
@@ -109,22 +109,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="28/12/2022"
-                android:textSize="12sp"
+                android:textSize="8sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="@dimen/_15dp"
+                android:layout_width="@dimen/_15dp"
+                android:layout_height="@dimen/_15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/ic_time"
                 android:backgroundTint="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/timeTextView"
@@ -132,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="12:36"
-                android:textSize="12sp"
+                android:textSize="8sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView3"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toTopOf="@+id/imageView3" />
