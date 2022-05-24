@@ -61,12 +61,11 @@
 
             <TextView
                 android:id="@+id/noteCategoryText"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:padding="@dimen/_5dp"
-                android:paddingTop="5dp"
+                android:padding="2dp"
                 android:text="sdfsdf"
                 android:textColor="@color/black"
                 android:textSize="14sp"

@@ -115,7 +115,6 @@
             android:background="@drawable/layout_decoration"
             android:ems="10"
             android:hint="@string/add_note"
-            android:inputType="textPersonName"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
             android:textColorHint="@color/white" />

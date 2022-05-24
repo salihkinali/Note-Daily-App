@@ -8,21 +8,5 @@
         android:title="Search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always|collapseActionView" />
-    <item
-        android:id="@+id/aFromZ"
-        android:icon="@drawable/ic_filter"
-        android:title="@string/a_dan_z_ye_s_ralama"
-        />
-    <item
-        android:id="@+id/newFromOld"
-        android:icon="@drawable/ic_filter"
-        android:title="@string/new_from_old"
-        />
-    <item
-        android:id="@+id/categoryUntilTill"
-        android:icon="@drawable/ic_filter"
-        android:title="@string/category_until_till"
-        />
-
 
 </menu>

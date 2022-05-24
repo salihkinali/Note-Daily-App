@@ -15,12 +15,7 @@ import com.salihkinali.notedailyapp.databinding.FragmentSplashScreenBinding
 class SplashScreenFragment : Fragment() {
     private var _binding: FragmentSplashScreenBinding? = null
     private val binding get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
+    private lateinit var timer: CountDownTimer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +24,7 @@ class SplashScreenFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.hide()
         _binding = FragmentSplashScreenBinding.inflate(inflater, container, false)
 
-        val timer = object :CountDownTimer(3000,1000){
+        timer = object :CountDownTimer(3000,1000){
             override fun onTick(p0: Long) {
             }
             override fun onFinish() {
@@ -52,6 +47,11 @@ class SplashScreenFragment : Fragment() {
     }
     private fun showIt(){
         (activity as AppCompatActivity).supportActionBar?.show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        timer.cancel()
     }
 }
 

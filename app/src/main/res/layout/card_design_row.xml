@@ -34,7 +34,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="10sp"
-            android:text="Belirtilen Zaman Aralığı: 23/12/2022"
             app:layout_constraintStart_toStartOf="@+id/todoText"
             app:layout_constraintTop_toBottomOf="@+id/todoText" />
 
@@ -42,7 +41,6 @@
             android:id="@+id/deleteButton"
             android:layout_width="30dp"
             android:layout_height="30dp"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_trash"
