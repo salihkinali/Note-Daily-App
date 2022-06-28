@@ -41,17 +41,17 @@ class AddNoteViewModel(private val dao:NoteDao): ViewModel() {
     }
 
     fun selectONe() {
-        _selectedRadioState = "Eğitim"
+        _selectedRadioState = "Education"
     }
 
     fun selectTwo() {
-        _selectedRadioState = "Yaşam"
+        _selectedRadioState = "Life"
     }
     fun selectThree() {
-        _selectedRadioState = "Eğlence"
+        _selectedRadioState = "Fun"
     }
     fun selectFour() {
-        _selectedRadioState = "Diğer"
+        _selectedRadioState = "Another"
     }
 
 }

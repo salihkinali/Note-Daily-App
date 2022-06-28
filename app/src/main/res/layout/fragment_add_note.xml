@@ -38,7 +38,7 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/egitim"
+            android:id="@+id/education"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10dp"
@@ -51,7 +51,7 @@
             app:useMaterialThemeColors="false" />
 
         <RadioButton
-            android:id="@+id/yasam"
+            android:id="@+id/life"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10dp"
@@ -60,7 +60,7 @@
             android:text="@string/life" />
 
         <RadioButton
-            android:id="@+id/eglence"
+            android:id="@+id/fun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10dp"
@@ -69,7 +69,7 @@
             android:text="@string/fun" />
 
         <RadioButton
-            android:id="@+id/diger"
+            android:id="@+id/another"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10dp"
@@ -120,7 +120,6 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="@dimen/_10dp"
             android:background="@drawable/layout_decoration"
-            android:gravity="left|top"
             android:hint="@string/add_note"
             android:paddingTop="@dimen/_10dp"
             android:textColor="@color/black"

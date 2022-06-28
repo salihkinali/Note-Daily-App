@@ -49,7 +49,7 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/egitim"
+            android:id="@+id/education"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10dp"
@@ -62,7 +62,7 @@
             app:useMaterialThemeColors="false" />
 
         <RadioButton
-            android:id="@+id/yasam"
+            android:id="@+id/life"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10dp"
@@ -71,17 +71,16 @@
             android:text="@string/life" />
 
         <RadioButton
-            android:id="@+id/eglence"
+            android:id="@+id/fun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10dp"
             android:layout_weight="1"
             android:buttonTint="#4CAF50"
-            android:text="@string/fun"
-            android:textColor="#2E7D32" />
+            android:text="@string/fun" />
 
         <RadioButton
-            android:id="@+id/diger"
+            android:id="@+id/another"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10dp"
@@ -99,6 +98,31 @@
         android:textColorHint="@color/text_hint_color"
         tools:layout_editor_absoluteX="10dp"
         tools:layout_editor_absoluteY="256dp" />-->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_marginStart="@dimen/_15dp"
+        android:layout_marginEnd="@dimen/_15dp"
+        android:padding="@dimen/_5dp"
+        android:orientation="horizontal"
+        >
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/selectImage"
+            android:layout_width="50dp"
+            android:visibility="visible"
+            android:layout_height="@dimen/_50dp"
+            android:src="@drawable/ic_image"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/realImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -225,7 +249,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:padding="@dimen/_10dp"
-                app:tint="@color/white" />
+                app:tint="@color/white"
+                android:contentDescription="@string/red_color" />
 
         </FrameLayout>
 

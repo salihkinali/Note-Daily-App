@@ -30,11 +30,13 @@
     <string name="a_dan_z_ye_s_ralama">A’dan Z’ye Sıralama</string>
     <string name="new_from_old">Yeni\'den Eskiye Sıralama</string>
     <string name="category_until_till">Kategoriye Göre Sıralama</string>
-    <string name="education">Eğitim</string>
-    <string name="life">Yaşam</string>
-    <string name="fun">Eğlence</string>
-    <string name="another">Diğer</string>
+    <string name="education">Education</string>
+    <string name="life">Life</string>
+    <string name="fun">Fun</string>
+    <string name="another">Another</string>
     <string name="option_side">⋮</string>
     <string name="todo_add">Yapılacakları Giriniz</string>
     <string name="date_time">Tarih Giriniz</string>
+    <string name="_12_36">12:36</string>
+    <string name="red_color">RED COLOR</string>
 </resources>

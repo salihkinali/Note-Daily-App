@@ -128,9 +128,9 @@ class AddNoteFragment : Fragment() {
 
             radioGroup.setOnCheckedChangeListener { group, checkedId ->
                 when (checkedId) {
-                    R.id.egitim -> viewModel.selectONe()
-                    R.id.yasam -> viewModel.selectTwo()
-                    R.id.eglence -> viewModel.selectThree()
+                    R.id.education -> viewModel.selectONe()
+                    R.id.life -> viewModel.selectTwo()
+                    R.id.`fun` -> viewModel.selectThree()
                     else -> viewModel.selectFour()
                 }
             }
@@ -172,8 +172,6 @@ class AddNoteFragment : Fragment() {
             }
         }
     }
-// ADD KISMINI HALLETTİM GERİ KALAN KISIM GÖRÜNTÜLEME VE GÜNCELLEME
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

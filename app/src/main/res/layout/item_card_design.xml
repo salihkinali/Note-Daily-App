@@ -14,7 +14,6 @@
         android:id="@+id/baselayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="@dimen/_5dp"
         android:orientation="horizontal">
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -48,14 +47,16 @@
 
         <TextView
             android:id="@+id/noteCategoryText"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:fontFamily="sans-serif-condensed-medium"
             android:padding="2dp"
             android:text="sdfsdf"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@+id/noteTitleText"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/noteTitleText"
             app:layout_constraintTop_toBottomOf="@+id/noteTitleText" />
 
@@ -79,6 +80,7 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:background="@drawable/ic_datetime"
             android:backgroundTint="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
