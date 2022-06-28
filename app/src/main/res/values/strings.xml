@@ -35,8 +35,8 @@
     <string name="fun">Fun</string>
     <string name="another">Another</string>
     <string name="option_side">⋮</string>
-    <string name="todo_add">Yapılacakları Giriniz</string>
-    <string name="date_time">Tarih Giriniz</string>
+    <string name="todo_add">Please Entry Todo List Plan</string>
+    <string name="date_time">Entry Date Time</string>
     <string name="_12_36">12:36</string>
     <string name="red_color">RED COLOR</string>
 </resources>

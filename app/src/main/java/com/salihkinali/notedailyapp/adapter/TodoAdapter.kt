@@ -28,7 +28,7 @@ class TodoAdapter : ListAdapter<TodoModel, TodoAdapter.ViewHolder>(TodoDiffUtilC
             cardview.animation = android.view.animation.AnimationUtils.loadAnimation(holder.cardDesignRowBinding.cardview.context,
             R.anim.recyclerview_animation)
             todoText.text = item.addTodo
-            dateText.text = "Belirtilen Zaman Aralığı : ${item.dateTodo}"
+            dateText.text = "Specified Time Range : ${item.dateTodo}"
             deleteButton.setOnClickListener {
                 onTodoClick(item.id)
                 Snackbar.make(it,"Yapılacaklar Listesinden Silindi.",2000).show()

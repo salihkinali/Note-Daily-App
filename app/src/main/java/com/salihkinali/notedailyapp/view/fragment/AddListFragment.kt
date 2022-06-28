@@ -8,12 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.adapter.TodoAdapter
 import com.salihkinali.notedailyapp.databese.NoteDatabese
@@ -57,7 +55,7 @@ class AddListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //Adapter bağlama işi burda yapılacak
         binding.addTodoRecyclerView.layoutManager =
-            StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+            LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
         binding.addTodoRecyclerView.adapter = adapter
         viewModel.todoList.observe(viewLifecycleOwner) {
            adapter.submitList(it)
@@ -66,46 +64,53 @@ class AddListFragment : Fragment() {
             viewModel.deleteNote(it)
         }
         binding.todoActionButton.setOnClickListener {
-
-            val design = layoutInflater.inflate(R.layout.addlist_design, null)
-            val alertEditText = design.findViewById<EditText>(R.id.addTodoEditText)
-            val alertDateTime = design.findViewById<EditText>(R.id.addDateTime)
-            val alertView = AlertDialog.Builder(requireContext())
-
-            alertView.setTitle("Yapılacaklar Listesi")
-            alertView.setIcon(R.drawable.ic_check)
-            alertView.setView(design)
-            alertDateTime.setOnClickListener {
-
-                    val calendar = Calendar.getInstance()
-                    val year = calendar.get(Calendar.YEAR)
-                    val month = calendar.get(Calendar.MONTH)
-                    val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-                    val datePicker = DatePickerDialog(requireContext(), { datePicker, yil, ay, gun ->
-                        alertDateTime.setText("$gun/${ay + 1}/$yil")
-                    }, year, month, day)
-                    datePicker.setTitle("Tarihi Seçiniz")
-                    datePicker.setButton(DialogInterface.BUTTON_POSITIVE, "AYARLA", datePicker)
-                    datePicker.setButton(DialogInterface.BUTTON_NEGATIVE, "İPTAL", datePicker)
-                    datePicker.show()
-
-
-            }
-            alertView.setPositiveButton("Kaydet") { dialogInterface, i ->
-                val getData = alertEditText.text.toString()
-                val geDate = alertDateTime.text.toString()
-                viewModel.insertTodo(
-                    TodoModel(addTodo = getData, dateTodo = geDate)
-                )
-                Snackbar.make(it, "Yapılacaklar Listesine 1 Veri Eklendi", 3000).show()
-            }
-            alertView.setNegativeButton("İptal") { dialogInterface, i ->
-            }
-            alertView.create().show()
+            createAlertView()
         }
 
 
+    }
+
+    private fun createAlertView() {
+        val design = layoutInflater.inflate(R.layout.addlist_design, null)
+        val alertEditText = design.findViewById<EditText>(R.id.addTodoEditText)
+        val alertDateTime = design.findViewById<EditText>(R.id.addDateTime)
+        val alertView = AlertDialog.Builder(requireContext())
+        alertView.setTitle("Todo List Screen")
+        alertView.setIcon(R.drawable.ic_check)
+        alertView.setView(design)
+        alertDateTime.setOnClickListener {
+
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+            val datePicker = DatePickerDialog(requireContext(), { datePicker, yil, ay, gun ->
+                alertDateTime.setText("$gun/${ay + 1}/$yil")
+            }, year, month, day)
+
+            datePicker.setTitle("Please Choise The Date Time")
+            datePicker.setButton(DialogInterface.BUTTON_POSITIVE, "SET", datePicker)
+            datePicker.setButton(DialogInterface.BUTTON_NEGATIVE, "CANCEL", datePicker)
+            datePicker.datePicker.minDate = System.currentTimeMillis() - 1000
+            datePicker.show()
+
+        }
+        alertView.setPositiveButton("SET") { dialogInterface, i ->
+            val getData = alertEditText.text.toString()
+            val takeDate = alertDateTime.text.toString()
+            if(getData.isNotEmpty() && takeDate.isNotEmpty()){
+                viewModel.insertTodo(
+                    TodoModel(addTodo = getData, dateTodo = takeDate)
+                )
+            }else{
+                Toast.makeText(activity,"Please Fill in the Blanks",Toast.LENGTH_SHORT).show()
+                return@setPositiveButton
+            }
+
+        }
+        alertView.setNegativeButton("CANCEL") { dialogInterface, i ->
+        }
+        alertView.create().show()
     }
 
     override fun onDestroyView() {

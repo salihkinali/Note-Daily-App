@@ -128,6 +128,7 @@
         <ImageView
             android:id="@+id/noteImage"
             android:layout_width="0dp"
+            android:layout_margin="5dp"
             android:layout_height="120dp"
             android:scaleType="centerCrop"
             android:visibility="visible"
