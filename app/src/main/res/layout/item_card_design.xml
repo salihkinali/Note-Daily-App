@@ -1,137 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/cardItem"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardItem"
+    android:layout_width="match_parent"
+    android:layout_margin="5dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_10dp"
+    app:cardElevation="@dimen/_10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/baselayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="@dimen/_10dp"
-        app:cardElevation="@dimen/_10dp">
+        android:layout_height="match_parent"
+        android:elevation="@dimen/_5dp"
+        android:orientation="horizontal">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/baselayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:elevation="@dimen/_5dp"
-            android:orientation="horizontal">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/lines"
+            android:layout_width="5dp"
+            android:layout_height="0dp"
+            android:background="@drawable/view"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.51" />
 
-            <ImageView
-                android:id="@+id/lines"
-                android:layout_width="5dp"
-                android:layout_height="0dp"
-                android:background="@drawable/view"
-                android:scaleType="centerInside"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.551" />
+        <TextView
+            android:id="@+id/noteTitleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/autour_one"
+            android:hint="Not Başlığı"
+            android:paddingTop="@dimen/_10dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/base_color_eleventh"
+            android:textColorHint="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/lines"
+            app:layout_constraintTop_toBottomOf="@+id/noteImage" />
 
-            <TextView
-                android:id="@+id/noteTitleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/autour_one"
-                android:hint="Not Başlığı"
-                android:paddingTop="@dimen/_10dp"
-                android:textAlignment="textStart"
-                android:textColor="@color/base_color_eleventh"
-                android:textColorHint="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/lines"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/noteCategoryText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="2dp"
+            android:text="sdfsdf"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/noteTitleText"
+            app:layout_constraintStart_toStartOf="@+id/noteTitleText"
+            app:layout_constraintTop_toBottomOf="@+id/noteTitleText" />
 
-            <TextView
-                android:id="@+id/popup"
-                android:layout_width="20dp"
-                android:layout_height="30dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="7dp"
-                android:layout_marginEnd="7dp"
-                android:gravity="center"
-                android:text="@string/option_side"
-                android:textAppearance="?android:textAppearanceLarge"
-                android:textStyle="bold"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/noteInsideText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="@dimen/_5dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/noteCategoryText"
+            app:layout_constraintTop_toBottomOf="@+id/noteCategoryText"
+            tools:text="sfssfsdfsdfsfsfsdsdfsdfsdfsdfsdfsdfdsfsdfsfsdfsfsdfsfdsfdsfsdfsdfsdfssfsdsfdsfsdsdfsdfsdfsdfsdfsdffsdfsdfsdssfsdfdsfsdfsdfsfsdfsdfsdfsdfssfsdfsdfssdfdsfdsfsdfsdfsfdsdfsfdfsfdsfdsfsdfdssdfsfsdfsfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfs" />
 
-            <TextView
-                android:id="@+id/noteCategoryText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:padding="2dp"
-                android:text="sdfsdf"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/lines"
-                app:layout_constraintTop_toBottomOf="@+id/noteTitleText" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/ic_datetime"
+            android:backgroundTint="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/noteInsideText"
+            app:layout_constraintTop_toBottomOf="@+id/noteInsideText" />
 
-            <TextView
-                android:id="@+id/noteInsideText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:padding="@dimen/_5dp"
-                android:paddingTop="5dp"
-                android:text="sfdfsfdsf"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/lines"
-                app:layout_constraintTop_toBottomOf="@+id/noteCategoryText" />
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="28/12/2022"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="1.0" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/ic_datetime"
-                android:backgroundTint="@color/black"
-                app:layout_constraintStart_toStartOf="@id/lines"
-                app:layout_constraintTop_toBottomOf="@+id/noteInsideText" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="@dimen/_15dp"
+            android:layout_height="@dimen/_15dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/ic_time"
+            android:backgroundTint="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/dateTextView"
+            app:layout_constraintStart_toEndOf="@+id/dateTextView"
+            app:layout_constraintTop_toTopOf="@id/dateTextView"
+            tools:layout_editor_absoluteY="251dp" />
 
-            <TextView
-                android:id="@+id/dateTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="28/12/2022"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        <TextView
+            android:id="@+id/timeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/_12_36"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            tools:ignore="SmallSp" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="@dimen/_15dp"
-                android:layout_height="@dimen/_15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/ic_time"
-                android:backgroundTint="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                app:layout_constraintVertical_bias="0.0" />
+        <ImageView
+            android:id="@+id/noteImage"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/lines"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
-                android:id="@+id/timeTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="12:36"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+        <TextView
+            android:id="@+id/popup"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            android:text="@string/option_side"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

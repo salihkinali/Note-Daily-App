@@ -77,12 +77,38 @@
             android:buttonTint="#4CAF50"
             android:text="@string/another" />
     </RadioGroup>
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10dp"
+    android:layout_marginStart="@dimen/_15dp"
+    android:layout_marginEnd="@dimen/_15dp"
+    android:padding="@dimen/_5dp"
+    android:orientation="horizontal"
+>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/selectImage"
+        android:layout_width="50dp"
+        android:visibility="visible"
+        android:layout_height="@dimen/_50dp"
+        android:src="@drawable/ic_image"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/realImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:hint="@string/add_note"
+        android:ellipsize="start"
+        android:textAlignment="viewStart"
         android:textDirection="locale"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp">
@@ -91,10 +117,12 @@
             android:id="@+id/note"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
             android:layout_margin="@dimen/_10dp"
             android:background="@drawable/layout_decoration"
-            android:gravity="start"
-            android:textAlignment="textStart"
+            android:gravity="left|top"
+            android:hint="@string/add_note"
+            android:paddingTop="@dimen/_10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/white"
             android:textDirection="locale" />

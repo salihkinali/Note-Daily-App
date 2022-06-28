@@ -4,12 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.salihkinali.notedailyapp.model.NoteDao
-import com.salihkinali.notedailyapp.model.NoteModel
-import com.salihkinali.notedailyapp.model.TodoDao
-import com.salihkinali.notedailyapp.model.TodoModel
+import androidx.room.TypeConverters
+import com.salihkinali.notedailyapp.model.*
 
-@Database(entities = [NoteModel::class,TodoModel::class], version = 2, exportSchema = false)
+@Database(entities = [NoteModel::class,TodoModel::class], version = 1, exportSchema = false)
+@TypeConverters(DataConverters::class)
 abstract class NoteDatabese : RoomDatabase(){
 
     abstract val noteDatabeseDao: NoteDao

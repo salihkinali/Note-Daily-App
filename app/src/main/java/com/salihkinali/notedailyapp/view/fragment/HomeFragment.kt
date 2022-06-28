@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.adapter.NoteAdapter
 import com.salihkinali.notedailyapp.databese.NoteDatabese
@@ -52,17 +54,16 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.noteReyclerView.layoutManager =
-            LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
+            StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         binding.noteReyclerView.adapter = adapter
         getAllNote()
         adapter.onNoteClick = { notePosition, rvPosition ->
-          viewModel.deleteNote(notePosition)
+            viewModel.deleteNote(notePosition)
         }
         binding.addNoteButton.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeToAddNote()
             findNavController().navigate(action)
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -81,16 +82,27 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             adapter.updateList(noteList)
             binding.apply {
                 if (noteList.isEmpty()) {
-                    noteReyclerView.visibility = View.GONE
-                    animationView.visibility = View.VISIBLE
-                    animationTextView.visibility = View.VISIBLE
+                    hideAnimation()
                 } else {
-                    noteReyclerView.visibility = View.VISIBLE
-                    animationView.visibility = View.GONE
-                    animationTextView.visibility = View.GONE
-
+                    showAnimation()
                 }
             }
+        }
+    }
+
+    private fun showAnimation() {
+        binding.apply {
+            noteReyclerView.visibility = View.VISIBLE
+            animationView.visibility = View.GONE
+            animationTextView.visibility = View.GONE
+        }
+    }
+
+    private fun hideAnimation() {
+        binding.apply {
+            noteReyclerView.visibility = View.GONE
+            animationView.visibility = View.VISIBLE
+            animationTextView.visibility = View.VISIBLE
         }
     }
 
@@ -104,6 +116,8 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onQueryTextChange(newText: String?): Boolean {
         if (newText != null) {
             searchWordCase(newText)
+        } else {
+            binding.animationTextView.text = "Aradığınız kelime bulunamadı."
         }
         return true
     }
