@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.databinding.CardDesignRowBinding
 import com.salihkinali.notedailyapp.model.TodoModel
@@ -12,9 +11,8 @@ import com.salihkinali.notedailyapp.model.TodoModel
 class TodoAdapter : ListAdapter<TodoModel, TodoAdapter.ViewHolder>(TodoDiffUtilCallBack()) {
     var onTodoClick: (Int) -> Unit = { }
     class ViewHolder(val cardDesignRowBinding: CardDesignRowBinding) :
-        RecyclerView.ViewHolder(cardDesignRowBinding.root) {
+        RecyclerView.ViewHolder(cardDesignRowBinding.root)
 
-    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val cardDesignRowBinding =
             CardDesignRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -31,7 +29,6 @@ class TodoAdapter : ListAdapter<TodoModel, TodoAdapter.ViewHolder>(TodoDiffUtilC
             dateText.text = "Specified Time Range : ${item.dateTodo}"
             deleteButton.setOnClickListener {
                 onTodoClick(item.id)
-                Snackbar.make(it,"Yapılacaklar Listesinden Silindi.",2000).show()
             }
         }
     }

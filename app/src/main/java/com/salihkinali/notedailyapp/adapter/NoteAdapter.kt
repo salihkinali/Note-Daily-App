@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
-import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.salihkinali.notedailyapp.R
@@ -29,7 +28,7 @@ class NoteAdapter(
         RecyclerView.ViewHolder(itemCardDesignBinding.root)
 
     private val noteList = ArrayList<NoteModel?>()
-    var onNoteClick: (NoteModel, Int) -> Unit = { noteModel: NoteModel, i: Int -> }
+    var onNoteClick: (NoteModel) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -75,13 +74,13 @@ class NoteAdapter(
                         when (it.itemId) {
                             R.id.sil -> {
                                 val alertView = AlertDialog.Builder(mContext)
-                                alertView.setMessage("Silmek İstediğinizden emin misiniz?")
-                                alertView.setTitle("Seçilen Dosya")
+                                alertView.setMessage("Are you sure delete to this note?")
+                                alertView.setTitle("Choose File")
                                 alertView.setIcon(R.drawable.ic_check)
-                                alertView.setPositiveButton("Sil") { dialogInterface, i ->
-                                    onNoteClick(note, position)
+                                alertView.setPositiveButton("DELETE") { _, _ ->
+                                    onNoteClick(note)
                                 }
-                                alertView.setNegativeButton("İptal") { dialogInterface, i ->
+                                alertView.setNegativeButton("CANCEL") { _, _ ->
 
                                 }
                                 alertView.create().show()
@@ -98,9 +97,9 @@ class NoteAdapter(
                             }
                             R.id.copy -> {
                                 val clipboard = cardItem.context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                                val clip: ClipData = ClipData.newPlainText("Notun Kendisi", note.noteInside)
+                                val clip: ClipData = ClipData.newPlainText("Note Owner", note.noteInside)
                                 clipboard.setPrimaryClip(clip)
-                                Toast.makeText(mContext,"Metin Kopyalandı.",Toast.LENGTH_SHORT).show()
+                                Toast.makeText(mContext,"Copy that",Toast.LENGTH_SHORT).show()
                                 true
                             }
                             else -> false
@@ -109,8 +108,8 @@ class NoteAdapter(
                     popup.show()
                 }
 
-                root.setOnLongClickListener { button ->
-                    Toast.makeText(mContext, "Dizi Sırası: $position", Toast.LENGTH_SHORT).show()
+                root.setOnLongClickListener {
+                    Toast.makeText(mContext, "Array Arrange: $position", Toast.LENGTH_SHORT).show()
                     true
                 }
             }

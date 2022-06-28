@@ -9,7 +9,7 @@ import com.salihkinali.notedailyapp.model.NoteDao
 import com.salihkinali.notedailyapp.model.NoteModel
 import kotlinx.coroutines.launch
 
-class NoteViewModel(val dbDao: NoteDao, application: Application) : AndroidViewModel(application) {
+class NoteViewModel(private val dbDao: NoteDao, application: Application) : AndroidViewModel(application) {
     private var _noteList = MutableLiveData<List<NoteModel>>()
     val noteList: LiveData<List<NoteModel>> get() = _noteList
 
@@ -28,12 +28,6 @@ class NoteViewModel(val dbDao: NoteDao, application: Application) : AndroidViewM
         }
     }
 
-    fun addNote(note: NoteModel){
-        viewModelScope.launch {
-            dbDao.insertNote(note)
-            getNotes()
-        }
-    }
 
     fun updateNote(note: NoteModel){
         viewModelScope.launch {
@@ -47,16 +41,4 @@ class NoteViewModel(val dbDao: NoteDao, application: Application) : AndroidViewM
             getNotes()
         }
     }
-
-    fun shortFromAtoZ() {
-        viewModelScope.launch {
-            _noteList.value =  dbDao.shortFromAtoZ()
-        }
-    }
-    fun shortUntilCategory(){
-        viewModelScope.launch {
-            _noteList.value = dbDao.shortUntilCategory()
-        }
-    }
-
 }

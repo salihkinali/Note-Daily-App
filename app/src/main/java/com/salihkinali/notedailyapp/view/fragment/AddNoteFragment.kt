@@ -83,7 +83,7 @@ class AddNoteFragment : Fragment() {
 
             viewColor1.setOnClickListener {
 
-                viewModel.choiseOne()
+                viewModel.chooseOne()
                 imageColor1.setImageResource(R.drawable.ic_check)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(0)
@@ -100,7 +100,7 @@ class AddNoteFragment : Fragment() {
                 imageColor5.setImageResource(0)
             }
             viewColor3.setOnClickListener {
-                viewModel.choiseThree()
+                viewModel.chooseThree()
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(R.drawable.ic_check)
@@ -108,8 +108,7 @@ class AddNoteFragment : Fragment() {
                 imageColor5.setImageResource(0)
             }
             viewColor4.setOnClickListener {
-
-                viewModel.choiseFour()
+                viewModel.chooseFour()
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(0)
@@ -117,8 +116,7 @@ class AddNoteFragment : Fragment() {
                 imageColor5.setImageResource(0)
             }
             viewColor5.setOnClickListener {
-
-                viewModel.choiseFive()
+                viewModel.chooseFive()
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(0)
@@ -126,7 +124,7 @@ class AddNoteFragment : Fragment() {
                 imageColor5.setImageResource(R.drawable.ic_check)
             }
 
-            radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            radioGroup.setOnCheckedChangeListener { _, checkedId ->
                 when (checkedId) {
                     R.id.education -> viewModel.selectONe()
                     R.id.life -> viewModel.selectTwo()
@@ -138,40 +136,43 @@ class AddNoteFragment : Fragment() {
                 getPermissionResult.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
             }
             addButton.setOnClickListener {
-
                 val title = noteTitle.text.toString()
                 val inside = note.text.toString()
-                val current = LocalDateTime.now()
-                val formatterDate = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-                val formatterTime = DateTimeFormatter.ofPattern("HH:mm")
-                val formattedDate = current.format(formatterDate)
-                val formattedTime = current.format(formatterTime)
-
-
-
-                if (title.isNotEmpty() &&  inside.isNotEmpty()) {
-                    viewModel.addNote((
-                            NoteModel(
-                                noteTitle = title,
-                                noteCategory = viewModel.selectedRadioState,
-                                noteImage = if(tempBitmap!=null){DataConverters().convertByteArray(tempBitmap!!)}
-                                else{ null},
-                                noteInside = inside,
-                                noteColor = viewModel.selectedNoteColor,
-                                timeNow = formattedTime,
-                                dateTime = formattedDate
-                            )
-                            ))
-                    val action = AddNoteFragmentDirections.addNoteToHomeFragment()
-                    findNavController().navigate(action)
-                } else {
-                    Toast.makeText(context, "Lütfen Boş Alanları Doldurun", Toast.LENGTH_LONG)
-                        .show()
-                }
-
+                saveNote(title,inside)
             }
         }
     }
+
+    private fun saveNote(title:String,inside:String) {
+
+        val current = LocalDateTime.now()
+        val formatterDate = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+        val formatterTime = DateTimeFormatter.ofPattern("HH:mm")
+        val formattedDate = current.format(formatterDate)
+        val formattedTime = current.format(formatterTime)
+
+        if (title.isNotEmpty() &&  inside.isNotEmpty()) {
+            viewModel.addNote((
+                    NoteModel(
+                        noteTitle = title,
+                        noteCategory = viewModel.selectedRadioState,
+                        noteImage = if(tempBitmap!=null){DataConverters().convertByteArray(tempBitmap!!)}
+                        else{ null},
+                        noteInside = inside,
+                        noteColor = viewModel.selectedNoteColor,
+                        timeNow = formattedTime,
+                        dateTime = formattedDate
+                    )
+                    ))
+            val action = AddNoteFragmentDirections.addNoteToHomeFragment()
+            findNavController().navigate(action)
+        } else {
+            Toast.makeText(context, "Please Fill in the Blanks!", Toast.LENGTH_LONG)
+                .show()
+        }
+
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

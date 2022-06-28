@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.salihkinali.notedailyapp.model.TodoDao
 import com.salihkinali.notedailyapp.model.TodoModel
 import kotlinx.coroutines.launch
-import java.text.FieldPosition
+
 
 class TodoViewModel(private val dao: TodoDao) : ViewModel() {
     private var _todoList = MutableLiveData<List<TodoModel>>()

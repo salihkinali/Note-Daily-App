@@ -66,8 +66,6 @@ class AddListFragment : Fragment() {
         binding.todoActionButton.setOnClickListener {
             createAlertView()
         }
-
-
     }
 
     private fun createAlertView() {
@@ -84,31 +82,32 @@ class AddListFragment : Fragment() {
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
-            val datePicker = DatePickerDialog(requireContext(), { datePicker, yil, ay, gun ->
+            val datePicker = DatePickerDialog(requireContext(), { _, yil, ay, gun ->
                 alertDateTime.setText("$gun/${ay + 1}/$yil")
             }, year, month, day)
 
-            datePicker.setTitle("Please Choise The Date Time")
+            datePicker.setTitle("Please Choose The Date Time")
             datePicker.setButton(DialogInterface.BUTTON_POSITIVE, "SET", datePicker)
             datePicker.setButton(DialogInterface.BUTTON_NEGATIVE, "CANCEL", datePicker)
             datePicker.datePicker.minDate = System.currentTimeMillis() - 1000
             datePicker.show()
 
         }
-        alertView.setPositiveButton("SET") { dialogInterface, i ->
+        alertView.setPositiveButton("SET") { _, _ ->
             val getData = alertEditText.text.toString()
             val takeDate = alertDateTime.text.toString()
             if(getData.isNotEmpty() && takeDate.isNotEmpty()){
                 viewModel.insertTodo(
                     TodoModel(addTodo = getData, dateTodo = takeDate)
                 )
+                Toast.makeText(activity,"Todo List Successfully added",Toast.LENGTH_SHORT).show()
             }else{
                 Toast.makeText(activity,"Please Fill in the Blanks",Toast.LENGTH_SHORT).show()
                 return@setPositiveButton
             }
 
         }
-        alertView.setNegativeButton("CANCEL") { dialogInterface, i ->
+        alertView.setNegativeButton("CANCEL") { _, _ ->
         }
         alertView.create().show()
     }

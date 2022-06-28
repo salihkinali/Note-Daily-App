@@ -20,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.databese.NoteDatabese
 import com.salihkinali.notedailyapp.databinding.FragmentNoteDetailBinding
+import com.salihkinali.notedailyapp.model.Constants
 import com.salihkinali.notedailyapp.model.DataConverters
 import com.salihkinali.notedailyapp.model.NoteModel
 import com.salihkinali.notedailyapp.viewmodel.NoteViewModel
@@ -91,17 +92,17 @@ class NoteDetailFragment : Fragment() {
             }
             noteTitle.setText(notes.noteTitle)
             when (notes.noteCategory) {
-                "Education" -> education.isChecked = true
-                "Life" -> life.isChecked = true
-                "Fun" -> `fun`.isChecked = true
+                Constants.EDUCATION -> education.isChecked = true
+                Constants.LIFE -> life.isChecked = true
+                Constants.FUN -> `fun`.isChecked = true
                 else -> another.isChecked = true
             }
             when (notes.noteColor) {
 
-                "#282829" -> imageColor1.setImageResource(R.drawable.ic_check)
-                "#007C3F" -> imageColor2.setImageResource(R.drawable.ic_check)
-                "#F6F54D" -> imageColor3.setImageResource(R.drawable.ic_check)
-                "#344CB7" -> imageColor4.setImageResource(R.drawable.ic_check)
+                Constants.BLACK_COLOR -> imageColor1.setImageResource(R.drawable.ic_check)
+                Constants.GREEN_COLOR -> imageColor2.setImageResource(R.drawable.ic_check)
+                Constants.YELLOW_COLOR -> imageColor3.setImageResource(R.drawable.ic_check)
+                Constants.BLUE_COLOR -> imageColor4.setImageResource(R.drawable.ic_check)
                 else -> imageColor5.setImageResource(R.drawable.ic_check)
             }
             note.setText(notes.noteInside)
@@ -117,7 +118,7 @@ class NoteDetailFragment : Fragment() {
                 getPermissionResult.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
             }
             viewColor1.setOnClickListener {
-                selectedNoteColor = "#282829"
+                selectedNoteColor = Constants.BLACK_COLOR
                 imageColor1.setImageResource(R.drawable.ic_check)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(0)
@@ -125,7 +126,7 @@ class NoteDetailFragment : Fragment() {
                 imageColor5.setImageResource(0)
             }
             viewColor2.setOnClickListener {
-                selectedNoteColor = "#007C3F"
+                selectedNoteColor = Constants.GREEN_COLOR
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(R.drawable.ic_check)
                 imageColor3.setImageResource(0)
@@ -133,7 +134,7 @@ class NoteDetailFragment : Fragment() {
                 imageColor5.setImageResource(0)
             }
             viewColor3.setOnClickListener {
-                selectedNoteColor = "#F6F54D"
+                selectedNoteColor = Constants.YELLOW_COLOR
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(R.drawable.ic_check)
@@ -141,7 +142,7 @@ class NoteDetailFragment : Fragment() {
                 imageColor5.setImageResource(0)
             }
             viewColor4.setOnClickListener {
-                selectedNoteColor = "#344CB7"
+                selectedNoteColor = Constants.BLUE_COLOR
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(0)
@@ -149,19 +150,19 @@ class NoteDetailFragment : Fragment() {
                 imageColor5.setImageResource(0)
             }
             viewColor5.setOnClickListener {
-                selectedNoteColor = "#F55353"
+                selectedNoteColor = Constants.PINK_COLOR
                 imageColor1.setImageResource(0)
                 imageColor2.setImageResource(0)
                 imageColor3.setImageResource(0)
                 imageColor4.setImageResource(0)
                 imageColor5.setImageResource(R.drawable.ic_check)
             }
-            radioGroup.setOnCheckedChangeListener { group, checkedId ->
-                when (checkedId) {
-                    R.id.education -> selectedRadioState = "Education"
-                    R.id.life -> selectedRadioState = "Life"
-                    R.id.`fun` -> selectedRadioState = "Fun"
-                    else -> selectedRadioState = "Another"
+            radioGroup.setOnCheckedChangeListener { _, checkedId ->
+                selectedRadioState = when (checkedId) {
+                    R.id.education -> Constants.EDUCATION
+                    R.id.life -> Constants.LIFE
+                    R.id.`fun` -> Constants.FUN
+                    else -> Constants.ANOTHER
                 }
             }
             val current = LocalDateTime.now()
@@ -189,7 +190,7 @@ class NoteDetailFragment : Fragment() {
                     findNavController().navigate(action)
 
                 } else {
-                    Snackbar.make(it, "Lütfen Boş Alan Bırakmayın.", Snackbar.LENGTH_LONG)
+                    Snackbar.make(it, "Please Fill in the blanks!", Snackbar.LENGTH_LONG)
                         .show()
                 }
 

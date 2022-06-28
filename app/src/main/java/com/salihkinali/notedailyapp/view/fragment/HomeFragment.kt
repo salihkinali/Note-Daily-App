@@ -6,8 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.adapter.NoteAdapter
@@ -57,7 +55,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         binding.noteReyclerView.adapter = adapter
         getAllNote()
-        adapter.onNoteClick = { notePosition, rvPosition ->
+        adapter.onNoteClick = { notePosition ->
             viewModel.deleteNote(notePosition)
         }
         binding.addNoteButton.setOnClickListener {
@@ -117,7 +115,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         if (newText != null) {
             searchWordCase(newText)
         } else {
-            binding.animationTextView.text = "Aradığınız kelime bulunamadı."
+            binding.animationTextView.text = "Could not find where you are looking for"
         }
         return true
     }
