@@ -37,7 +37,7 @@
         android:id="@+id/animationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/haydi_baslayalim"
+        android:text="@string/lets_start"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"

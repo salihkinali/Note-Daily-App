@@ -15,6 +15,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.databinding.ItemCardDesignBinding
+import com.salihkinali.notedailyapp.model.Constants
 import com.salihkinali.notedailyapp.model.DataConverters
 import com.salihkinali.notedailyapp.model.NoteModel
 import com.salihkinali.notedailyapp.view.fragment.HomeFragmentDirections
@@ -43,7 +44,13 @@ class NoteAdapter(
             note?.let {
 
                     cardItem.setCardBackgroundColor(Color.parseColor(note.noteColor))
-                    if (note.noteColor == "#282829") lines.setBackgroundColor(Color.parseColor("#1E1F2C")) else if (note.noteColor == "#007C3F") lines.setBackgroundColor(Color.parseColor("#1F6628")) else if (note.noteColor == "#F6F54D") lines.setBackgroundColor(Color.parseColor("#878628")) else if (note.noteColor == "#F55353") lines.setBackgroundColor(Color.parseColor("#983636")) else lines.setBackgroundColor(Color.parseColor("#273577"))
+                when (note.noteColor) {
+                    Constants.BLACK_COLOR -> lines.setBackgroundColor(Color.parseColor("#1E1F2C"))
+                    Constants.GREEN_COLOR -> lines.setBackgroundColor(Color.parseColor("#1F6628"))
+                    Constants.YELLOW_COLOR -> lines.setBackgroundColor(Color.parseColor("#878628"))
+                    Constants.BLUE_COLOR -> lines.setBackgroundColor(Color.parseColor("#983636"))
+                    else -> lines.setBackgroundColor(Color.parseColor("#273577"))
+                }
                     if(note.noteImage != null){
                         lines.visibility = View.GONE
                         noteImage.setImageBitmap(DataConverters().convertBitmap(note.noteImage!!))
@@ -55,7 +62,7 @@ class NoteAdapter(
                     noteInsideText.text = note.noteInside
                     dateTextView.text = note.dateTime
                     timeTextView.text = note.timeNow
-                    if (note.noteColor == "#282829") {
+                    if (note.noteColor == Constants.BLACK_COLOR) {
                         noteTitleText.setTextColor(Color.parseColor("#FFFFFF"))
                         noteCategoryText.setTextColor(Color.parseColor("#FFFFFF"))
                         noteInsideText.setTextColor(Color.parseColor("#FFFFFF"))

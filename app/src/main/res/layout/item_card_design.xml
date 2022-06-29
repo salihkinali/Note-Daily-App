@@ -129,7 +129,7 @@
             android:id="@+id/noteImage"
             android:layout_width="0dp"
             android:layout_margin="5dp"
-            android:layout_height="120dp"
+            android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"

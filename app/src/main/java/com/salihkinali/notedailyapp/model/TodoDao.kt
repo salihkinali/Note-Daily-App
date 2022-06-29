@@ -14,7 +14,7 @@ interface TodoDao {
     @Delete
     suspend  fun deleteNote(todo: TodoModel)
 
-    @Query("SELECT * FROM todo_table")
+    @Query("SELECT * FROM todo_table ORDER BY todo_date ASC")
     suspend fun readAllNote(): List<TodoModel>
 
     @Query("DELETE FROM todo_table WHERE id= :position")

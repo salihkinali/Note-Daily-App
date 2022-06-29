@@ -54,18 +54,38 @@ class AddListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Adapter bağlama işi burda yapılacak
+        getTodoList()
+        binding.todoActionButton.setOnClickListener {
+            createAlertView()
+        }
+    }
+
+    private fun getTodoList() {
         binding.addTodoRecyclerView.layoutManager =
             LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
         binding.addTodoRecyclerView.adapter = adapter
         viewModel.todoList.observe(viewLifecycleOwner) {
-           adapter.submitList(it)
+            if(it.isEmpty()){
+                showText()
+            }
+            else{
+                hideText(it)
+            }
         }
         adapter.onTodoClick = {
             viewModel.deleteNote(it)
         }
-        binding.todoActionButton.setOnClickListener {
-            createAlertView()
-        }
+    }
+
+    private fun hideText(list:List<TodoModel>) {
+        binding.noToDo.visibility = View.GONE
+        binding.addTodoRecyclerView.visibility = View.VISIBLE
+        adapter.submitList(list)
+    }
+
+    private fun showText() {
+        binding.noToDo.visibility = View.VISIBLE
+        binding.addTodoRecyclerView.visibility = View.GONE
     }
 
     private fun createAlertView() {
