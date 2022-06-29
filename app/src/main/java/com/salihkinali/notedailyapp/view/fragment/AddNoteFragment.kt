@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -15,6 +17,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.salihkinali.notedailyapp.R
 import com.salihkinali.notedailyapp.databese.NoteDatabese
 import com.salihkinali.notedailyapp.databinding.FragmentAddNoteBinding
@@ -133,7 +136,38 @@ class AddNoteFragment : Fragment() {
                 }
             }
             binding.selectImage.setOnClickListener{
-                getPermissionResult.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+
+                // on below line we are creating a new bottom sheet dialog.
+                val dialog = BottomSheetDialog(requireContext())
+
+                // on below line we are inflating a layout file which we have created.
+                val view = layoutInflater.inflate(R.layout.bottom_sheet, null)
+
+                // on below line we are creating a variable for our button
+                // which we are using to dismiss our dialog.
+                val btnChoose = view.findViewById<Button>(R.id.chooseImage)
+                val galleryImage = view.findViewById<ImageView>(R.id.galleryImage)
+                // on below line we are adding on click listener
+                // for our dismissing the dialog button.
+                galleryImage.setOnClickListener{
+                    dialog.dismiss()
+                    getPermissionResult.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                }
+                btnChoose.setOnClickListener {
+                    dialog.dismiss()
+                }
+                // below line is use to set cancelable to avoid
+                // closing of dialog box when clicking on the screen.
+                dialog.setCancelable(false)
+
+                // on below line we are setting
+                // content view to our view.
+                dialog.setContentView(view)
+
+                // on below line we are calling
+                // a show method to display a dialog.
+                dialog.show()
+
             }
             addButton.setOnClickListener {
                 val title = noteTitle.text.toString()
