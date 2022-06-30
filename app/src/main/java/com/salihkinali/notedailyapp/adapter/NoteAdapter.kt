@@ -48,7 +48,7 @@ class NoteAdapter(
                     Constants.BLACK_COLOR -> lines.setBackgroundColor(Color.parseColor("#1E1F2C"))
                     Constants.GREEN_COLOR -> lines.setBackgroundColor(Color.parseColor("#1F6628"))
                     Constants.YELLOW_COLOR -> lines.setBackgroundColor(Color.parseColor("#878628"))
-                    Constants.BLUE_COLOR -> lines.setBackgroundColor(Color.parseColor("#983636"))
+                    Constants.PINK_COLOR -> lines.setBackgroundColor(Color.parseColor("#983636"))
                     else -> lines.setBackgroundColor(Color.parseColor("#273577"))
                 }
                     if(note.noteImage != null){
@@ -83,7 +83,7 @@ class NoteAdapter(
                                 val alertView = AlertDialog.Builder(mContext)
                                 alertView.setMessage("Are you sure delete to this note?")
                                 alertView.setTitle("Choose File")
-                                alertView.setIcon(R.drawable.ic_check)
+                                alertView.setIcon(R.drawable.ic_warning)
                                 alertView.setPositiveButton("DELETE") { _, _ ->
                                     onNoteClick(note)
                                 }

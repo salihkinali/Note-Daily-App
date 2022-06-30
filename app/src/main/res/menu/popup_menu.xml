@@ -6,5 +6,5 @@
         android:title="@string/duzenle"/>
     <item android:id="@+id/copy"
         android:icon="@drawable/ic_copy"
-        android:title="Kopyala"/>
+        android:title="@string/copy"/>
 </menu>

@@ -27,7 +27,6 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         db = NoteDatabese.getInstance(requireContext())!!
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -72,7 +71,6 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         searchView?.setOnQueryTextListener(this)
         super.onCreateOptionsMenu(menu, inflater)
     }
-
 
     private fun getAllNote() {
         viewModel.noteList.observe(viewLifecycleOwner) { noteLists ->
@@ -130,6 +128,3 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         _binding = null
     }
 }
-
-
-

@@ -1,4 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Note&amp;DailyApp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_note">Add Note</string>
+    <string name="add_kategorisi">Add Category</string>
+    <string name="note_title">Note Title</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="pick_up_color">Pick Up Color</string>
+    <string name="note_kategorisi">Note Kategorisi</string>
+    <string name="sadaasds">sadaasds</string>
+    <string name="button">click button</string>
+    <string name="dialogTitle">Delete Note File</string>
+    <string name="dialogMessage">Are you sure delete this note?</string>
+    <string name="add_list">Add List</string>
+    <string name="home">Home</string>
+    <string name="sil">Delete</string>
+    <string name="duzenle">Edit</string>
+    <string name="lets_start">No note has been added yet. So let\'s start!</string>
+    <string name="note_daily"><![CDATA[Note & Daily]]></string>
+    <string name="basla">START</string>
+    <string name="geri">PREVIOUS</string>
+    <string name="ileri">NEXT</string>
+    <string name="previous">PREVIOUS</string>
+    <string name="daily_life">Taking Notes in Daily Life</string>
+    <string name="explain">We want to discover and record something in every moment of life. Capture every moment of life with Note Daily.</string>
+    <string name="every_plannig">Plan Every Moment of Your Life</string>
+    <string name="discover">Let\'s Explore the App…</string>
+    <string name="title"><![CDATA[Note & Daily]]></string>
+    <string name="a_dan_z_ye_s_ralama">A’dan Z’ye Sıralama</string>
+    <string name="new_from_old">Yeni\'den Eskiye Sıralama</string>
+    <string name="category_until_till">Kategoriye Göre Sıralama</string>
+    <string name="education">Education</string>
+    <string name="life">Life</string>
+    <string name="fun">Fun</string>
+    <string name="another">Another</string>
+    <string name="option_side">⋮</string>
+    <string name="todo_add">Please Entry Todo List Plan</string>
+    <string name="date_time">Entry Date Time</string>
+    <string name="_12_36">12:36</string>
+    <string name="red_color">RED COLOR</string>
+    <string name="take_note">Everyone loves Note Daily for its elegant interface and natural drawing experience, free of distractions so you can focus on capturing and expressing your ideas.</string>
     <string name="no_to_dolist">No to-do list yet. Add now</string>
+    <string name="copy">Copy</string>
 </resources>
