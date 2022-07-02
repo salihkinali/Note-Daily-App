@@ -77,6 +77,7 @@
             android:buttonTint="#4CAF50"
             android:text="@string/another" />
     </RadioGroup>
+
 <androidx.appcompat.widget.LinearLayoutCompat
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -96,7 +97,7 @@
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/realImage"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         android:scaleType="centerCrop"
         android:visibility="gone" />
 

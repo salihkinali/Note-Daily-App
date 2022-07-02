@@ -174,13 +174,13 @@ class NoteDetailFragment : Fragment() {
 
                 val title = noteTitle.text.toString()
                 val inside = note.text.toString()
+                val noteImage = notes.noteImage
 
                 if (title.isNotEmpty() && inside.isNotEmpty()) {
-
                     notes.noteTitle = title
                     notes.noteCategory = selectedRadioState
                     notes.noteImage = if(tempBitmap!=null){DataConverters().convertByteArray(tempBitmap!!)}
-                    else{ null}
+                    else{noteImage}
                     notes.noteColor = selectedNoteColor
                     notes.noteInside = inside
                     notes.dateTime = formattedDate

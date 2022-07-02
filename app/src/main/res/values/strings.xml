@@ -42,4 +42,7 @@
     <string name="take_note">Everyone loves Note Daily for its elegant interface and natural drawing experience, free of distractions so you can focus on capturing and expressing your ideas.</string>
     <string name="no_to_dolist">No to-do list yet. Add now</string>
     <string name="copy">Copy</string>
+    <string name="close">CLOSE</string>
+    <string name="camera">CAMERA</string>
+    <string name="gallery">GALLERY</string>
 </resources>

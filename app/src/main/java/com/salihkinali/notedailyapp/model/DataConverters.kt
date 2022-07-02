@@ -1,9 +1,11 @@
 package com.salihkinali.notedailyapp.model
 
+import android.R.attr
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.room.TypeConverter
 import java.io.ByteArrayOutputStream
+
 
 class DataConverters {
     @TypeConverter

@@ -8,141 +8,136 @@
     android:orientation="vertical"
     tools:context=".view.fragment.HomeFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/noteTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10dp"
-            android:background="@drawable/layout_decoration"
-            android:ems="10"
-            android:hint="@string/note_title"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:padding="@dimen/_5dp"
-            android:textColorHint="#757575"
-            tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="188dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!--<androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/noteTitle"
-        android:layout_width="match_parent"
-        android:layout_margin="@dimen/_10dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/note_title"
-        android:inputType="textPersonName"
-        android:textColorHint="@color/text_hint_color"
-        />-->
-    <RadioGroup
-        android:id="@+id/radio_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="#A8EDEDED"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/education"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_10dp"
-            android:layout_weight="1"
-            android:buttonTint="#4CAF50"
-            android:checked="true"
-            android:text="@string/education"
-            android:textColorHighlight="#4CAF50"
-            android:textColorLink="#4CAF50"
-            app:useMaterialThemeColors="false" />
-
-        <RadioButton
-            android:id="@+id/life"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_10dp"
-            android:layout_weight="1"
-            android:buttonTint="#4CAF50"
-            android:text="@string/life" />
-
-        <RadioButton
-            android:id="@+id/fun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_10dp"
-            android:layout_weight="1"
-            android:buttonTint="#4CAF50"
-            android:text="@string/fun" />
-
-        <RadioButton
-            android:id="@+id/another"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_10dp"
-            android:layout_weight="1"
-            android:buttonTint="#4CAF50"
-            android:text="@string/another" />
-    </RadioGroup>
-    <!--<androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10dp"
-        android:hint="@string/add_kategorisi"
-        android:textColor="@color/black"
-        android:textColorHint="@color/text_hint_color"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="256dp" />-->
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10dp"
-        android:layout_marginStart="@dimen/_15dp"
-        android:layout_marginEnd="@dimen/_15dp"
-        android:padding="@dimen/_5dp"
-        android:orientation="horizontal"
-        >
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/selectImage"
-            android:layout_width="50dp"
-            android:visibility="visible"
-            android:layout_height="@dimen/_50dp"
-            android:src="@drawable/ic_image"/>
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/realImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:visibility="gone" />
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/note"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/_10dp"
-            android:layout_weight="1"
-            android:background="@drawable/layout_decoration"
-            android:ems="10"
-            android:hint="@string/add_note"
-            android:textAlignment="viewStart"
-            android:textColor="@color/black"
-            android:textColorHint="@color/white" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/noteTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10dp"
+                    android:background="@drawable/layout_decoration"
+                    android:ems="10"
+                    android:hint="@string/note_title"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:padding="@dimen/_5dp"
+                    android:textColorHint="#757575"
+                    tools:layout_editor_absoluteX="10dp"
+                    tools:layout_editor_absoluteY="188dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="#A8EDEDED"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/education"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10dp"
+                    android:layout_weight="1"
+                    android:buttonTint="#4CAF50"
+                    android:checked="true"
+                    android:text="@string/education"
+                    android:textColorHighlight="#4CAF50"
+                    android:textColorLink="#4CAF50"
+                    app:useMaterialThemeColors="false" />
+
+                <RadioButton
+                    android:id="@+id/life"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10dp"
+                    android:layout_weight="1"
+                    android:buttonTint="#4CAF50"
+                    android:text="@string/life" />
+
+                <RadioButton
+                    android:id="@+id/fun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10dp"
+                    android:layout_weight="1"
+                    android:buttonTint="#4CAF50"
+                    android:text="@string/fun" />
+
+                <RadioButton
+                    android:id="@+id/another"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10dp"
+                    android:layout_weight="1"
+                    android:buttonTint="#4CAF50"
+                    android:text="@string/another" />
+            </RadioGroup>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15dp"
+                android:layout_marginTop="@dimen/_10dp"
+                android:layout_marginEnd="@dimen/_15dp"
+                android:orientation="horizontal"
+                android:padding="@dimen/_5dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/selectImage"
+                    android:layout_width="50dp"
+                    android:layout_height="@dimen/_50dp"
+                    android:src="@drawable/ic_image"
+                    android:visibility="visible" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/realImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/note"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/layout_decoration"
+                    android:ems="10"
+                    android:hint="@string/add_note"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -248,9 +243,9 @@
                 android:id="@+id/imageColor5"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:contentDescription="@string/red_color"
                 android:padding="@dimen/_10dp"
-                app:tint="@color/white"
-                android:contentDescription="@string/red_color" />
+                app:tint="@color/white" />
 
         </FrameLayout>
 
@@ -263,7 +258,6 @@
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/updateButton"
         android:layout_width="match_parent"

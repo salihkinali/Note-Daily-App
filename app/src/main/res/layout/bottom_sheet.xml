@@ -12,10 +12,9 @@
 
         <Button
             android:id="@+id/chooseImage"
-            android:layout_width="391dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Resmi Seç"
+            android:text="@string/close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,22 +22,23 @@
 
         <ImageView
             android:id="@+id/galleryImage"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.46"
             app:layout_constraintStart_toEndOf="@+id/cameraImage"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_choose_image" />
 
         <ImageView
             android:id="@+id/cameraImage"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="120dp"
             android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/galleryImage"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -48,9 +48,13 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CAMERA"
+            android:layout_marginBottom="@dimen/_10dp"
+            android:text="@string/camera"
+            android:textSize="12sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/chooseImage"
             app:layout_constraintEnd_toEndOf="@+id/cameraImage"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/cameraImage"
             app:layout_constraintTop_toBottomOf="@+id/cameraImage" />
 
@@ -58,10 +62,11 @@
             android:id="@+id/textView5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="GALLERY"
+            android:layout_marginBottom="@dimen/_10dp"
+            android:text="@string/gallery"
+            android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/galleryImage"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toTopOf="@+id/chooseImage"
             app:layout_constraintStart_toStartOf="@+id/galleryImage"
             app:layout_constraintTop_toBottomOf="@+id/galleryImage" />
     </androidx.constraintlayout.widget.ConstraintLayout>

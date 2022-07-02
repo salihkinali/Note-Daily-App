@@ -2,9 +2,11 @@ package com.salihkinali.notedailyapp.view.fragment
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -25,10 +28,13 @@ import com.salihkinali.notedailyapp.model.DataConverters
 import com.salihkinali.notedailyapp.model.NoteModel
 import com.salihkinali.notedailyapp.viewmodel.AddNoteViewModel
 import com.salihkinali.notedailyapp.viewmodel.AddNoteViewModelFactory
+import java.io.File
 import java.io.FileDescriptor
 import java.io.IOException
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class AddNoteFragment : Fragment() {
@@ -37,8 +43,12 @@ class AddNoteFragment : Fragment() {
     private lateinit var db: NoteDatabese
     private lateinit var viewModel: AddNoteViewModel
     private var tempBitmap: Bitmap? = null
+    private var tempUri: Uri? = null
     private lateinit var getPermissionResult: ActivityResultLauncher<String>
     private lateinit var getImageResult: ActivityResultLauncher<String>
+    private lateinit var takeImage:ActivityResultLauncher<Uri>
+    private lateinit var cameraLauncher:ActivityResultLauncher<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         db = NoteDatabese.getInstance(requireContext())!!
@@ -75,6 +85,31 @@ class AddNoteFragment : Fragment() {
             }
 
         }
+        cameraLauncher =  registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+            if (it) {
+                tempUri = androidx.core.content.FileProvider.getUriForFile(requireContext(),
+                    "com.salihkinali.notedailyapp.provider",
+                    getImageFile())
+                takeImage.launch(tempUri)
+            } else {
+                return@registerForActivityResult
+            }
+        }
+        takeImage = registerForActivityResult(ActivityResultContracts.TakePicture()){success ->
+            if(success){
+                tempUri?.let {
+                    binding.realImage.visibility = View.VISIBLE
+                    binding.selectImage.visibility = View.GONE
+                    val newBitmap = Bitmap.createScaledBitmap(getBitmapFromUri(tempUri!!)!!, 1024,900,false)
+                    tempBitmap = rotateBitmap(newBitmap,90f)
+                    binding.realImage.setImageBitmap(tempBitmap)
+                }
+            }else{
+                return@registerForActivityResult
+            }
+
+        }
+
         return binding.root
     }
 
@@ -147,11 +182,16 @@ class AddNoteFragment : Fragment() {
                 // which we are using to dismiss our dialog.
                 val btnChoose = view.findViewById<Button>(R.id.chooseImage)
                 val galleryImage = view.findViewById<ImageView>(R.id.galleryImage)
+                val cameraImage = view.findViewById<ImageView>(R.id.cameraImage)
                 // on below line we are adding on click listener
                 // for our dismissing the dialog button.
                 galleryImage.setOnClickListener{
                     dialog.dismiss()
                     getPermissionResult.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                }
+                cameraImage.setOnClickListener {
+                    dialog.dismiss()
+                    cameraLauncher.launch(android.Manifest.permission.CAMERA)
                 }
                 btnChoose.setOnClickListener {
                     dialog.dismiss()
@@ -218,5 +258,21 @@ class AddNoteFragment : Fragment() {
         val image = BitmapFactory.decodeFileDescriptor(fileDescriptor)
         parcelFileDescriptor.close()
         return image
+    }
+    private fun getImageFile(): File {
+        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val storageDr = context?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile(
+            "simple_${timeStamp}",
+            ".jpg",
+            storageDr
+        )
+    }
+    fun rotateBitmap(source: Bitmap, degrees: Float): Bitmap {
+        val matrix = Matrix()
+        matrix.postRotate(degrees)
+        return Bitmap.createBitmap(
+            source, 0, 0, source.width, source.height, matrix, true
+        )
     }
 }
